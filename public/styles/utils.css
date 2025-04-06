@@ -1,0 +1,68 @@
+:root {
+  --clr-bg-1: #1a1a1a;
+  --clr-bg-2: #121212;
+  --clr-secondary: #c28840;
+  --clr-teriary: #b76e79;
+  --clr-text-1: #c28840;
+  --clr-text-2: white;
+  --clr-ok: #50c878;
+  --clr-warning: #ffe852;
+  --clr-error: #800020;
+  --clr-button: #b76e79;
+  --clr-shadow: rgba(0, 0, 0, 0.6);
+  --font-family-primary: "Playfair", "Sans-serif";
+  --font-family-secondary: "Cinzel", "Sans-serif";
+
+  --space-xs: 3px;
+  --space-s: 6px;
+  --space-m: 9px;
+  --space-l: 12px;
+  --space-xl: 15px;
+  --space-2xl: 20px;
+  --space-3xl: 30px;
+  --space-100: 100px;
+
+  --line-height-xs: 1;
+  --line-height-s: 1.2;
+  --line-height-m: 1.5;
+  --line-height-l: 1.75;
+  --line-height-xl: 2;
+
+  --font-size-xs: 12px;
+  --font-size-s: 14px;
+  --font-size-m: 16px;
+  --font-size-l: 20px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+  --font-size-3xl: 40px;
+
+  --font-weight-regular: 12px;
+  --font-weight-semi: 14px;
+  --font-weight-bold: 16px;
+
+  --shadow-xs: 1px 1px 1px var(--clr-shadow);
+  --shadow-s: 2px 2px 2px var(--clr-shadow);
+  --shadow-m: 3px 3px 3px var(--clr-shadow);
+  --shadow-l: 4px 4px 4px var(--clr-shadow);
+  --shadow-xl: 5px 5px 5px var(--clr-shadow);
+
+  --opacity-low: 0.25;
+  --opacity-mid: 0.5;
+  --opacity-high: 0.75;
+  --opacity-full: 1;
+
+  --wrapper-width-s: 350px;
+  --wrapper-width-m: 500px;
+  --wrapper-width-l: 750px;
+  --wrapper-width-xl: 1000px;
+  --wrapper-width-2xl: 1250px;
+  --wrapper-width-3xl: 1500px;
+}
+
+.wrapper {
+  width: var(--wrapper-width-s);
+  margin: 0 auto;
+  flex: 1;
+  padding: 0 var(--space-2xl);
+  border: 1px solid red;
+}

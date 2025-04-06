@@ -1,0 +1,39 @@
+{
+  "name": "house-of-messages",
+  "version": "1.0.0",
+  "description": "Fullstack message app with registered users",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js",
+    "start:dev": "node --watch app.js",
+    "db:delete": "node db/delete-tables.js",
+    "db:create": "node db/create-tables.js",
+    "db:seed": "node db/seed-users.js",
+    "db:setup": "node db/delete-tables.js && node db/create-tables.js && node db/seed-users.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/biandresen/House-of-Messages.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/biandresen/House-of-Messages/issues"
+  },
+  "homepage": "https://github.com/biandresen/House-of-Messages#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "connect-pg-simple": "^10.0.0",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.18.1",
+    "express-validator": "^7.2.1",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "pg": "^8.14.1"
+  }
+}

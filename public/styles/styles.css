@@ -1,0 +1,36 @@
+@import url("./reset.css");
+@import url("./utils.css");
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-family: var(--font-family-primary);
+  background-color: var(--clr-bg-1);
+  color: var(--clr-text-1);
+}
+
+header {
+  width: 100%;
+  padding: 20px 0;
+  background-color: var(--clr-bg-2);
+}
+.header__content {
+  display: flex;
+  justify-content: space-between;
+}
+.header__list {
+  display: flex;
+  gap: 20px;
+}
+.header__list-item {
+  list-style: none;
+}
+
+footer {
+  width: 100%;
+  background-color: var(--clr-bg-2);
+  text-align: center;
+  padding: 10px 0;
+}
