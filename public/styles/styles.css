@@ -10,10 +10,20 @@ body {
   background-color: var(--clr-bg-1);
   color: var(--clr-text-1);
 }
+button {
+  cursor: pointer;
+  margin: var(--space-xl) 0;
+  padding: var(--space-s) var(--space-l);
+  border: none;
+  border-radius: var(--space-100);
+
+  font-weight: var(--font-weight-semi);
+  font-family: var(--font-family-secondary);
+}
 
 header {
   width: 100%;
-  padding: 20px 0;
+  padding: var(--space-2xl) 0;
   background-color: var(--clr-bg-2);
 }
 .header__content {
@@ -22,10 +32,112 @@ header {
 }
 .header__list {
   display: flex;
-  gap: 20px;
+  gap: var(--space-2xl);
 }
 .header__list-item {
   list-style: none;
+}
+.register__heading {
+  padding-top: var(--space-s);
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+}
+.register__form-card {
+  padding: var(--space-xl);
+  border-radius: var(--space-m);
+
+  border: 2px solid var(--clr-secondary);
+  background-color: var(--clr-bg-2);
+}
+.register__form {
+}
+.register__input-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.register__label {
+  font-weight: var(--font-weight-bold);
+}
+.register__input {
+  text-indent: 5px;
+  padding: 0 var(--space-s);
+  border: none;
+  border-radius: var(--space-100);
+  margin-bottom: var(--space-s);
+
+  background-color: var(--clr-bg-1);
+  color: var(--clr-text-1);
+}
+.register__input::placeholder {
+  color: var(--clr-text-1);
+  opacity: var(--opacity-high);
+}
+.register__submit-btn-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.register__submit-btn {
+  background-color: var(--clr-tertiary);
+  color: var(--clr-bg-1);
+}
+.register__error-message {
+  border-radius: var(--space-m);
+  margin: var(--space-xl) 0;
+  padding: var(--space-m) var(--space-xl);
+  max-width: 160px;
+  text-align: center;
+
+  font-size: var(--font-size-xs);
+  background-color: var(--clr-error);
+  color: var(--clr-text-2);
+}
+.register__toggle-login {
+  font-style: italic;
+  padding-bottom: var(--space-xs);
+}
+.register__login-link {
+  text-decoration: underline;
+}
+.register__form-card-hr {
+  border: none;
+  height: 1px;
+  width: 112%;
+  margin-left: -6%;
+  margin-right: -10%;
+  margin-top: var(--space-l);
+  margin-bottom: var(--space-l);
+
+  background-color: var(--clr-secondary);
+}
+.register__requirements-wrapper {
+  padding-top: var(--space-xs);
+}
+.register__requirements-info {
+  font-size: var(--font-size-xs);
+}
+
+.register__info-card {
+  margin: var(--space-2xl) 0;
+  padding: var(--space-xl);
+  border-radius: var(--space-m);
+
+  border: 2px solid var(--clr-secondary);
+  background-color: var(--clr-bg-2);
+}
+.register__info-main-heading {
+  padding-bottom: var(--space-s);
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+}
+.register__info-heading {
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-bold);
+}
+.register__info-text {
+  font-size: var(--font-size-s);
+  padding-bottom: var(--space-m);
 }
 
 footer {

@@ -2,9 +2,9 @@
   --clr-bg-1: #1a1a1a;
   --clr-bg-2: #121212;
   --clr-secondary: #c28840;
-  --clr-teriary: #b76e79;
+  --clr-tertiary: #b76e79;
   --clr-text-1: #c28840;
-  --clr-text-2: white;
+  --clr-text-2: rgba(255, 255, 255, 0.85);
   --clr-ok: #50c878;
   --clr-warning: #ffe852;
   --clr-error: #800020;
@@ -34,11 +34,12 @@
   --font-size-l: 20px;
   --font-size-xl: 24px;
   --font-size-2xl: 32px;
-  --font-size-3xl: 40px;
+  --font-size-3xl: 36px;
+  --font-size-4xl: 40px;
 
-  --font-weight-regular: 12px;
-  --font-weight-semi: 14px;
-  --font-weight-bold: 16px;
+  --font-weight-regular: 300;
+  --font-weight-semi: 600;
+  --font-weight-bold: 800;
 
   --shadow-xs: 1px 1px 1px var(--clr-shadow);
   --shadow-s: 2px 2px 2px var(--clr-shadow);

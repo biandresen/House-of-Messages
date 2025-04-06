@@ -2,7 +2,7 @@
 <section class="register__form-card">
   <form class="register__form" action="/register" method="POST">
     <div class="register__input-wrapper">
-      <label for="email">Email:</label>
+      <label class="register__label" for="email">Email</label>
       <input
         class="register__input"
         type="email"
@@ -12,7 +12,7 @@
       />
     </div>
     <div class="register__input-wrapper">
-      <label for="firstname">First name:</label>
+      <label class="register__label for="firstname">First name</label>
       <input
         class="register__input"
         type="text"
@@ -22,7 +22,7 @@
       />
     </div>
     <div class="register__input-wrapper">
-      <label for="lastname">Last name:</label>
+      <label class="register__label for="lastname">Last name</label>
       <input
         class="register__input"
         type="text"
@@ -32,7 +32,7 @@
       />
     </div>
     <div class="register__input-wrapper">
-      <label for="password">Password:</label>
+      <label class="register__label for="password">Password</label>
       <input
         class="register__input"
         type="password"
@@ -42,7 +42,7 @@
       />
     </div>
     <div class="register__input-wrapper">
-      <label for="confirmPassword">Confirm password:</label>
+      <label class="register__label for="confirmPassword">Confirm password</label>
       <input
         class="register__input"
         type="password"
@@ -51,15 +51,16 @@
         required
       />
     </div>
-    <div>
+    <div class="register__submit-btn-wrapper">
       <button class="register__submit-btn" type="submit">Register</button>
-      <p class="register__error-message"></p>
+      <p class="register__error-message">Some error message</p>
     </div>
     <p class="register__toggle-login">
       Already have an account?
       <a class="register__login-link" href="/login">Login</a>
     </p>
   </form>
+  <hr class="register__form-card-hr">
   <div class="register__requirements-wrapper">
     <p class="register__requirements-info">
       NB! All fields are required for successful registration
