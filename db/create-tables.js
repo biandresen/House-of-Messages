@@ -8,7 +8,7 @@ async function createTables() {
   id SERIAL PRIMARY KEY,
   email VARCHAR(50) UNIQUE NOT NULL,
   username VARCHAR(50) UNIQUE NOT NULL,
-  password VARCHAR(50) NOT NULL,
+  password VARCHAR(100) NOT NULL,
   firstName TEXT NOT NULL,
   lastName TEXT NOT NULL,
   is_member BOOLEAN NOT NULL,

@@ -75,7 +75,7 @@ header {
 }
 .register__submit-btn-wrapper {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 }
 .register__submit-btn {
   background-color: var(--clr-tertiary);
@@ -83,18 +83,18 @@ header {
 }
 .register__error-message {
   border-radius: var(--space-m);
-  margin: var(--space-xl) 0;
+  margin: 0 0 var(--space-m) 0;
   padding: var(--space-m) var(--space-xl);
-  max-width: 160px;
-  text-align: center;
 
   font-size: var(--font-size-xs);
   background-color: var(--clr-error);
   color: var(--clr-text-2);
 }
+.register__error-message ul li {
+  margin-left: var(--space-s);
+}
 .register__toggle-login {
   font-style: italic;
-  padding-bottom: var(--space-xs);
 }
 .register__login-link {
   text-decoration: underline;

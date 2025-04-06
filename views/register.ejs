@@ -7,26 +7,29 @@
         class="register__input"
         type="email"
         name="email"
+        value="<%= locals.oldInput?.email || '' %>"
         placeholder="email@placeholder.com"
         required
       />
     </div>
     <div class="register__input-wrapper">
-      <label class="register__label for="firstname">First name</label>
+      <label class="register__label for="firstName">First name</label>
       <input
         class="register__input"
         type="text"
-        name="firstname"
+        name="firstName"
+        value="<%= locals.oldInput?.firstName || '' %>"
         placeholder="John..."
         required
       />
     </div>
     <div class="register__input-wrapper">
-      <label class="register__label for="lastname">Last name</label>
+      <label class="register__label for="lastName">Last name</label>
       <input
         class="register__input"
         type="text"
-        name="lastname"
+        name="lastName"
+        value="<%= locals.oldInput?.lastName || '' %>"
         placeholder="Doe..."
         required
       />
@@ -53,7 +56,15 @@
     </div>
     <div class="register__submit-btn-wrapper">
       <button class="register__submit-btn" type="submit">Register</button>
-      <p class="register__error-message">Some error message</p>
+      <div class="register__error-message">
+        <% if (locals.errors && locals.errors.length > 0) { %>
+          <ul>
+            <% locals.errors.forEach(error => { %>
+              <li><%= error.msg %></li>
+            <% }) %>
+          </ul>
+        <% } %>
+      </>
     </div>
     <p class="register__toggle-login">
       Already have an account?

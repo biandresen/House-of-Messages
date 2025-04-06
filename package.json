@@ -9,8 +9,7 @@
     "start:dev": "node --watch app.js",
     "db:delete": "node db/delete-tables.js",
     "db:create": "node db/create-tables.js",
-    "db:seed": "node db/seed-users.js",
-    "db:setup": "node db/delete-tables.js && node db/create-tables.js && node db/seed-users.js"
+    "db:setup": "node db/delete-tables.js && node db/create-tables.js"
   },
   "repository": {
     "type": "git",
