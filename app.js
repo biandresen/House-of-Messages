@@ -6,6 +6,7 @@ import "dotenv/config";
 import connectPgSimple from "connect-pg-simple";
 import { pool } from "./db/pool.js";
 import "./utils/passport-config.js";
+import { formRouter } from "./routes/formRouter.js";
 
 const app = express();
 
@@ -35,9 +36,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-app.get("/", (req, res) => {
-  res.render("register", { title: "Register" });
-});
+app.use(formRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
