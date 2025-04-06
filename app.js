@@ -36,7 +36,7 @@ app.use(passport.session());
 
 // Routes
 app.get("/", (req, res) => {
-  res.render("home", { title: "Home" });
+  res.render("register", { title: "Register" });
 });
 
 const PORT = process.env.PORT || 3000;
