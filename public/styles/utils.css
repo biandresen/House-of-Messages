@@ -67,3 +67,6 @@
   padding: 0 var(--space-2xl);
   border: 1px solid red;
 }
+.faded {
+  opacity: var(--opacity-high);
+}

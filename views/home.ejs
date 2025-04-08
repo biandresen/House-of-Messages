@@ -1,26 +1,38 @@
 <h2 class="home__heading">Your Room</h2>
 <section class="home__info-card">
-  <h2 class="home__info-main-heading">Welcome Birger</h2>
+  <h2 class="home__info-main-heading">Welcome <%= locals.user.firstname%></h2>
   <h3 class="home__user-data-heading">Your information</h3>
     <div class="home__information-wrapper">
       <p class="home__label">Username:</p>
-      <p class="home__value">the_username</p>
+      <p class="home__value"><%= locals.user.username%></p>
 
       <p class="home__label">First name:</p>
-      <p class="home__value">John</p>
+      <p class="home__value"><%= locals.user.firstname%></p>
 
       <p class="home__label">Last name:</p>
-      <p class="home__value">Doe</p>
+      <p class="home__value"><%= locals.user.lastname%></p>
 
       <p class="home__label">Email:</p>
-      <p class="home__value">john@example.com</p>
+      <p class="home__value"><%= locals.user.email%></p>
+
+      <p class="home__label">Registered at:</p>
+      <p class="home__value"><%= locals.user.created_at%></p>
+
+      <p class="home__label">Member status:</p>
+      <% if (!locals.user.is_member) { %>
+        <p class="home__value">Not a member yet</p>
+        <% } else { %>
+          <p class="home__value">House Member</p>
+      <% } %>
     </div>
   <div class="home__buttons-wrapper">
     <div class="home__buttons-wrapper-child">
       <button class="home__messages-btn btn-filled">Messages</button>
       <button class="home__new-message-btn btn-filled">New Message</button>
     </div>
+    <% if (!locals.user.is_member) { %>
     <button class="home__join-btn btn-outlined">Join the Club</button>
+    <% } %>
   </div>
   <h3 class="home__info-heading">Becoming a house member</h3>
   <p class="home__info-text">
@@ -28,17 +40,24 @@
   </p>
 </section>
 
-<h3 class="home__heading-2">Newest Message</h3>
-<section class="post-card">
-  <h4 class="post-card__title">Title</h4>
-  <p class="post-card__text">Here are some text representing the text of the message</p>
+<h3 class="home__heading-2 faded">Newest Message</h3>
+<% if (locals.latestMessage && !locals.errorMsg){ %>
+<section class="post-card faded">
+  <h4 class="post-card__title"><%= locals.latestMessage.title %></h4>
+  <p class="post-card__text"><%= locals.latestMessage.text %></p>
   <hr class="post-card__hr">
   <div class="post-card__details-wrapper">
     <p class="post-card__posted">
-      <strong>Posted:</strong> 01.01.2010
+      <strong>Posted:</strong> <%= locals.latestMessage.created_at %>
     </p>
     <p class="post-card__by">
-      <strong>By:</strong> @username
+      <strong>By:</strong> <%= locals.latestMessage.username %>
     </p>
   </div>
 </section>
+<% } else { %>
+  <section class="post-card faded">
+    <p class="message-error">Sorry. Couldn't fetch the latest message. Try again later...</p>
+    <p>(Error: <%= locals.errorMsg %>)</p>
+  </section>
+<% } %>

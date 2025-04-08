@@ -12,6 +12,7 @@ export const UserModel = {
       throw err;
     }
   },
+
   async findUserByUsername(username) {
     const queryText = "SELECT * FROM users WHERE username = $1";
     const queryParams = [username];
@@ -38,7 +39,7 @@ export const UserModel = {
 
   async createUser({ email, username, password, firstName, lastName, is_member, is_admin }) {
     const queryText =
-      "INSERT INTO users (email, username, password, firstName, lastName, is_member, is_admin) VALUES ($1, $2, $3, $4, $5, $6, $7)";
+      "INSERT INTO users (email, username, password, firstname, lastname, is_member, is_admin) VALUES ($1, $2, $3, $4, $5, $6, $7)";
     const queryParams = [email, username, password, firstName, lastName, is_member, is_admin];
     try {
       await pool.query(queryText, queryParams);

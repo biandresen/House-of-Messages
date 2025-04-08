@@ -9,8 +9,8 @@ async function createTables() {
   email VARCHAR(50) UNIQUE NOT NULL,
   username VARCHAR(50) UNIQUE NOT NULL,
   password VARCHAR(100) NOT NULL,
-  firstName TEXT NOT NULL,
-  lastName TEXT NOT NULL,
+  firstname TEXT NOT NULL,
+  lastname TEXT NOT NULL,
   is_member BOOLEAN NOT NULL,
   is_admin BOOLEAN DEFAULT false,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
