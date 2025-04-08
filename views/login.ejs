@@ -1,10 +1,10 @@
-<h2 class="register__heading">Login</h2>
-<section class="register__form-card">
-  <form class="register__form" action="/login" method="POST">
-    <div class="register__input-wrapper">
-      <label class="register__label" for="email">Email</label>
+<h2 class="login__heading">Login</h2>
+<section class="login__form-card">
+  <form class="login__form" action="/login" method="POST">
+    <div class="login__input-wrapper">
+      <label class="login__label" for="email">Email</label>
       <input
-        class="register__input"
+        class="login__input"
         type="email"
         name="email"
         value="<%= locals.oldInput?.email || '' %>"
@@ -12,20 +12,20 @@
         required
       />
     </div>
-    <div class="register__input-wrapper">
-      <label class="register__label for="password">Password</label>
+    <div class="login__input-wrapper">
+      <label class="login__label for="password">Password</label>
       <input
-        class="register__input"
+        class="login__input"
         type="password"
         name="password"
         placeholder="aLongAndStrongPassword..."
         required
       />
     </div>
-    <div class="register__submit-btn-wrapper">
-      <button class="register__submit-btn" type="submit">Login</button>
+    <div class="login__submit-btn-wrapper">
+      <button class="login__submit-btn" type="submit">Login</button>
       <% if (locals.errors) { %>
-      <div class="register__error-message">
+      <div class="login__error-message">
         <% if (locals.errors.length > 0) { %>
           <ul>
             <% locals.errors.forEach(error => { %>
@@ -36,31 +36,31 @@
       </>
     </div>
     <% } %>
-    <p class="register__toggle-login">
+    <p class="login__toggle-login">
       Don't have an account?
-      <a class="register__login-link" href="/register">Register</a>
+      <a class="login__login-link" href="/register">Register</a>
     </p>
   </form>
-  <hr class="register__form-card-hr">
-  <div class="register__requirements-wrapper">
-    <p class="register__requirements-info">
+  <hr class="login__form-card-hr">
+  <div class="login__requirements-wrapper">
+    <p class="login__requirements-info">
       NB! Both fields are required for successful login
     </p>
   </div>
 </section>
 
-<section class="register__info-card">
-  <h2 class="register__info-main-heading">Information</h2>
-  <h3 class="register__info-heading">How to login</h3>
-  <p class="register__info-text">
+<section class="login__info-card">
+  <h2 class="login__info-main-heading">Information</h2>
+  <h3 class="login__info-heading">How to login</h3>
+  <p class="login__info-text">
     In order to login you must provide your email and password.
   </p>
-  <h3 class="register__info-heading">What to expect</h3>
-  <p class="register__info-text">
+  <h3 class="login__info-heading">What to expect</h3>
+  <p class="login__info-text">
     When you are successfully logged in you will be directed to your home page where you can see information about your user and become a house member - if you have the secret password... You are also able to go to the messages area to view messages!
   </p>
-  <h3 class="register__info-heading">Becoming a house member</h3>
-  <p class="register__info-text">
+  <h3 class="login__info-heading">Becoming a house member</h3>
+  <p class="login__info-text">
     Becoming a house member requires you to insert a secret password into the ‘Become a member’ field on your ‘home’ page. The idea is that you stick around and get noticed until a house member deem you worthy as a member and gives you the secret password...
   </p>
 </section>

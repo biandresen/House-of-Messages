@@ -12,6 +12,17 @@ export const UserModel = {
       throw err;
     }
   },
+  async findUserByUsername(username) {
+    const queryText = "SELECT * FROM users WHERE username = $1";
+    const queryParams = [username];
+    try {
+      const result = await pool.query(queryText, queryParams);
+      return result.rows[0];
+    } catch (err) {
+      console.error("Error fetching user from database: ", err);
+      throw err;
+    }
+  },
 
   async findUserById(id) {
     const queryText = "SELECT * FROM users WHERE id = $1";

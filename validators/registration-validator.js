@@ -1,6 +1,8 @@
 // schemas/registerUserSchema.js
 import { checkSchema } from "express-validator";
 
+const nameRegex = /^[\p{L}]+(?:[ '-][\p{L}]+)*$/u;
+
 export const registerUserSchema = checkSchema({
   email: {
     isEmail: {
@@ -25,6 +27,11 @@ export const registerUserSchema = checkSchema({
     notEmpty: {
       errorMessage: "First name is required",
     },
+    matches: {
+      options: [nameRegex],
+      errorMessage:
+        "First name can only contain letters, single spaces, hyphens or apostrophes, and cannot start or end with them.",
+    },
   },
 
   lastName: {
@@ -35,6 +42,11 @@ export const registerUserSchema = checkSchema({
     trim: true,
     notEmpty: {
       errorMessage: "Last name is required",
+    },
+    matches: {
+      options: [nameRegex],
+      errorMessage:
+        "Last name can only contain letters, single spaces, hyphens or apostrophes, and cannot start or end with them.",
     },
   },
 

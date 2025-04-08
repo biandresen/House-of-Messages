@@ -7,6 +7,7 @@ import connectPgSimple from "connect-pg-simple";
 import { pool } from "./db/pool.js";
 import "./utils/passport-config.js";
 import { formRouter } from "./routes/formRouter.js";
+import { indexRouter } from "./routes/indexRouter.js";
 
 const app = express();
 
@@ -23,7 +24,9 @@ app.use(express.json());
 app.use(
   session({
     store: new PgSession({
-      pool: pool,
+      pool,
+      tableName: "session",
+      createTableIfMissing: true,
     }),
     secret: process.env.SESSION_SECRET,
     resave: false,
@@ -37,6 +40,7 @@ app.use(passport.session());
 
 // Routes
 app.use(formRouter);
+app.use(indexRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

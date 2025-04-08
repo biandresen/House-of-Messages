@@ -35,10 +35,14 @@ export const formController = {
     // Hash the password
     const hashedPassword = await hashPassword(validatedData.password);
 
+    // Generate a unique username based on the email
+    const baseUsername = validatedData.email.split("@")[0];
+    const username = await generateUniqueUsername(baseUsername);
+
     // Create the user
     const userToCreate = {
       ...validatedData,
-      username: validatedData.email.split("@")[0],
+      username,
       password: hashedPassword,
       is_member: false,
       is_admin: false,
@@ -52,9 +56,8 @@ export const formController = {
     res.redirect("/login");
   },
 
-  // Render the login form
-  getLoginForm: async (req, res) => {
-    console.log("Rendering login form...");
+  getLoginForm: (req, res) => {
+    console.log("Getting login form...");
     res.render("login", { title: "Login" });
   },
 };
@@ -94,6 +97,18 @@ async function checkForExistingUser(res, { email }, page) {
       code: 500,
     });
   }
+}
+
+async function generateUniqueUsername(baseUsername) {
+  let username = baseUsername;
+  let counter = 1;
+
+  while (await UserModel.findUserByUsername(username)) {
+    username = `${baseUsername}${counter}`;
+    counter++;
+  }
+
+  return username;
 }
 
 // Create the user in the database

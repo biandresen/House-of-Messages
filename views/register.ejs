@@ -56,8 +56,9 @@
     </div>
     <div class="register__submit-btn-wrapper">
       <button class="register__submit-btn" type="submit">Register</button>
+      <% if (locals.errors) { %>
       <div class="register__error-message">
-        <% if (locals.errors && locals.errors.length > 0) { %>
+        <% if (locals.errors.length > 0) { %>
           <ul>
             <% locals.errors.forEach(error => { %>
               <li><%= error.msg %></li>
@@ -66,6 +67,7 @@
         <% } %>
       </>
     </div>
+    <% } %>
     <p class="register__toggle-login">
       Already have an account?
       <a class="register__login-link" href="/login">Login</a>
