@@ -1,2 +1,44 @@
-<h1><%=locals.title %></h1>
-<p>This is the home</p>
+<h2 class="home__heading">Your Room</h2>
+<section class="home__info-card">
+  <h2 class="home__info-main-heading">Welcome Birger</h2>
+  <h3 class="home__user-data-heading">Your information</h3>
+    <div class="home__information-wrapper">
+      <p class="home__label">Username:</p>
+      <p class="home__value">the_username</p>
+
+      <p class="home__label">First name:</p>
+      <p class="home__value">John</p>
+
+      <p class="home__label">Last name:</p>
+      <p class="home__value">Doe</p>
+
+      <p class="home__label">Email:</p>
+      <p class="home__value">john@example.com</p>
+    </div>
+  <div class="home__buttons-wrapper">
+    <div class="home__buttons-wrapper-child">
+      <button class="home__messages-btn btn-filled">Messages</button>
+      <button class="home__new-message-btn btn-filled">New Message</button>
+    </div>
+    <button class="home__join-btn btn-outlined">Join the Club</button>
+  </div>
+  <h3 class="home__info-heading">Becoming a house member</h3>
+  <p class="home__info-text">
+    Insert the secret password to the field on the right in order to join the exclusive membership. Hang out, get noticed, impress and maybe you will be trusted with the secret password. Good luck!
+  </p>
+</section>
+
+<h3 class="home__heading-2">Newest Message</h3>
+<section class="post-card">
+  <h4 class="post-card__title">Title</h4>
+  <p class="post-card__text">Here are some text representing the text of the message</p>
+  <hr class="post-card__hr">
+  <div class="post-card__details-wrapper">
+    <p class="post-card__posted">
+      <strong>Posted:</strong> 01.01.2010
+    </p>
+    <p class="post-card__by">
+      <strong>By:</strong> @username
+    </p>
+  </div>
+</section>
