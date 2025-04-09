@@ -1,0 +1,34 @@
+<div class="messages__wrapper">
+<h3 class="messages__heading">Messages</h3>
+<div class="messages__wrapper-child">
+  <a class="messages__new-message btn-outlined" href="/new-message">
+    <img src="/icons/plus.svg" alt="">
+  </a>
+  <button class="messages__toggle-info">
+    <img src="/icons/triangle.svg" alt="">
+  </button>
+</div>
+</div>
+<% if (locals.allMessages) {
+  locals.allMessages.forEach(message => { %>
+  <section class="post-card">
+    <h4 class="post-card__title"><%= message.title %></h4>
+    <p class="post-card__text"><%= message.text %></p>
+    <hr class="post-card__hr">
+    <div class="post-card__details-wrapper">
+      <p class="post-card__posted">
+        <strong>Posted:</strong> <%= message.created_at %>
+      </p>
+      <p class="post-card__by">
+      <strong>By:</strong> <%= message.username %>
+      </p>
+    </div>
+</section>
+ <% })} else { %>
+  <section class="post-card">
+    <h4 class="post-card__title">Error</h4>
+    <p class="post-card__text">No messages found</p>
+    <p class="post-card__text">Try again later...</p>
+    <hr class="post-card__hr">
+</section>
+  <% } %>
