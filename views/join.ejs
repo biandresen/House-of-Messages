@@ -1,0 +1,16 @@
+<h2 class="join__heading">Join the Club</h2>
+<section class="join-card">
+  <h4 class="join-card__title">Become a house member</h4>
+  <form class="join-form" action="/join" method="POST">
+    <input class="join-card__input" name="password" type="password" placeholder="secret password..." required />
+    <button class="join-btn btn-filled" type="submit">Join</button>
+  </form>
+
+  <% if (locals.errorMsg) { %>
+  <p class="join-card__error-message"><%= locals.errorMsg %></p>
+<% } %>
+  <hr class="join-card__hr" />
+  <div class="join-card__details-wrapper">
+    <p class="join-card__info">Insert the secret member password to join</p>
+  </div>
+</section>
