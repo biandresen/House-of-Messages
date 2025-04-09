@@ -22,6 +22,10 @@ export const indexController = {
       });
     }
   },
+  get404Page: async (req, res) => {
+    console.log("Getting 404-page...");
+    res.status(404).render("404-page", { title: "Page Not Found" });
+  },
   logout: (req, res) => {
     const user = req?.user;
     if (!user) res.redirect("/login");

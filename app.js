@@ -8,6 +8,7 @@ import { pool } from "./db/pool.js";
 import "./utils/passport-config.js";
 import { formRouter } from "./routes/formRouter.js";
 import { indexRouter } from "./routes/indexRouter.js";
+import { indexController } from "./controllers/indexController.js";
 
 const app = express();
 
@@ -41,6 +42,7 @@ app.use(passport.session());
 // Routes
 app.use(formRouter);
 app.use(indexRouter);
+app.use(indexController.get404Page);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
