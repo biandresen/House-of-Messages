@@ -281,7 +281,7 @@ header {
   text-decoration: underline;
 }
 .home__information-wrapper {
-  padding: var(--space-s) 0 var(--space-l) 0;
+  padding: var(--space-s) 0 0 0;
   display: grid;
   grid-template-columns: max-content 1fr;
   row-gap: 0.3rem;
@@ -360,6 +360,78 @@ header {
   justify-content: space-between;
   margin-bottom: -10px;
 }
+
+/** JOIN PAGE */
+.join__heading {
+  padding-top: var(--space-s);
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+}
+.join-card {
+  padding: var(--space-xl);
+  border-radius: var(--space-m);
+  margin-bottom: var(--space-xl);
+
+  border: 2px solid var(--clr-secondary);
+  background-color: var(--clr-bg-2);
+}
+.join-card__title {
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-bold);
+}
+.join-form {
+}
+.join-card__input {
+  text-indent: 5px;
+  width: 100%;
+  padding: 0 var(--space-s);
+  border: none;
+  border-radius: var(--space-100);
+  margin-bottom: var(--space-s);
+
+  background-color: var(--clr-bg-1);
+  color: var(--clr-text-1);
+}
+.join-card__input::placeholder {
+  color: var(--clr-text-1);
+  opacity: var(--opacity-mid);
+}
+.join-card__button-wrapper {
+}
+.join-btn {
+  font-size: var(--font-size-l);
+  padding: var(--space-xs) var(--space-3xl);
+  width: 100%;
+  margin: var(--space-m) 0 var(--space-s) 0;
+}
+.join-card__error-message {
+  border-radius: var(--space-m);
+  margin: var(--space-s) 0 var(--space-m) 0;
+  padding: var(--space-m) var(--space-xl);
+
+  font-size: var(--font-size-s);
+  background-color: var(--clr-error);
+  color: var(--clr-text-2);
+}
+.join-card__hr {
+  border: none;
+  height: 1px;
+  width: 112%;
+  margin-left: -6%;
+  margin-right: -10%;
+  margin-top: var(--space-l);
+  margin-bottom: var(--space-l);
+
+  background-color: var(--clr-secondary);
+}
+.join-card__details-wrapper {
+  margin: -5px 0 -10px 0;
+}
+.join-card__info {
+  font-size: var(--font-size-s);
+}
+
 footer {
   width: 100%;
   background-color: var(--clr-bg-2);
