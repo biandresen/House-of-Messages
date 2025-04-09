@@ -60,6 +60,7 @@ export const formController = {
     console.log("--------------------------------");
     console.log("Processing registration form...");
     const page = "register";
+    const user = req?.user || false;
 
     // Validate registration input
     const validationResult = await validateRegistrationForm(req);
@@ -97,8 +98,8 @@ export const formController = {
     const userCreated = await createUser(res, userToCreate, page);
     if (!userCreated) return;
 
-    // Redirect to the login page if successful
-    res.redirect("/login");
+    if (!user) res.redirect("/login");
+    res.redirect("/logout");
   },
 
   getLoginForm: (req, res) => {
@@ -120,7 +121,9 @@ async function validateRegistrationForm(req) {
     console.log("Validation passed");
   } catch (err) {
     console.error("Error during validation:", err);
-    return { error: "An unexpected error occurred during validation. Please try again later." };
+    return {
+      error: "An unexpected error occurred during validation. Please try again later.",
+    };
   }
   return null;
 }

@@ -40,11 +40,27 @@ export const UserModel = {
     }
   },
 
-  async createUser({ email, username, password, firstName, lastName, is_member, is_admin }) {
+  async createUser({
+    email,
+    username,
+    password,
+    firstName,
+    lastName,
+    is_member,
+    is_admin,
+  }) {
     console.log("Creating user...");
     const queryText =
       "INSERT INTO users (email, username, password, firstname, lastname, is_member, is_admin) VALUES ($1, $2, $3, $4, $5, $6, $7)";
-    const queryParams = [email, username, password, firstName, lastName, is_member, is_admin];
+    const queryParams = [
+      email,
+      username,
+      password,
+      firstName,
+      lastName,
+      is_member,
+      is_admin,
+    ];
     try {
       await pool.query(queryText, queryParams);
     } catch (err) {
@@ -61,7 +77,7 @@ export const UserModel = {
       const result = await pool.query(queryText, queryParams);
       return result.rows[0];
     } catch (err) {
-      console.log("Error setting membership: ", err);
+      console.error("Error setting membership: ", err);
       throw err;
     }
   },

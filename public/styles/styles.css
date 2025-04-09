@@ -350,7 +350,7 @@ header {
   margin-top: -12px;
 }
 .post-card__text {
-  font-size: var(--font-size-s);
+  font-size: var(--font-size-xm);
   padding-bottom: var(--space-m);
   line-height: var(--line-height-s);
 }
@@ -524,9 +524,25 @@ header {
   background-color: var(--clr-bg-1);
   color: var(--clr-text-1);
 }
+.new-message__details-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-m);
+  margin-bottom: -8px;
+}
 .new-message__post-btn {
   margin: var(--space-xs) 0;
   margin-left: auto;
+  max-height: 35px;
+}
+.new-message__error {
+  border-radius: var(--space-m);
+  padding: var(--space-m) var(--space-xl);
+
+  font-size: var(--font-size-s);
+  background-color: var(--clr-error);
+  color: var(--clr-text-2);
 }
 
 footer {

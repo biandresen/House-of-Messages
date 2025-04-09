@@ -7,3 +7,5 @@ export const indexRouter = Router();
 indexRouter.get("/", authenticate.isRegistered, indexController.getHomePage);
 indexRouter.get("/logout", indexController.logout);
 indexRouter.get("/messages", indexController.getMessagesPage);
+indexRouter.get("/new-message", indexController.getNewMessagePage);
+indexRouter.post("/new-message", indexController.postNewMessage);

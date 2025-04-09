@@ -9,12 +9,12 @@ export const indexController = {
     if (!user) return res.redirect("/login");
 
     try {
-      const latestMessage = await MessagesModel.findMessageByLatest();
+      const latestMessage = await MessagesModel.getMessageByLatest();
       latestMessage.created_at = formatDate(latestMessage.created_at);
       user.created_at = formatDate(user.created_at);
       res.render("home", { title: "Home", user, latestMessage });
     } catch (err) {
-      console.log("Error during the getHomePage controller: ", err);
+      console.error("Error during the getHomePage controller: ", err);
       res.render("home", {
         title: "Home",
         user,
@@ -32,13 +32,68 @@ export const indexController = {
   },
   getMessagesPage: async (req, res) => {
     console.log("Getting messages page...");
-    const allMessages = await MessagesModel.getAllMessages();
+    const user = req?.user || false;
+    try {
+      const allMessages = await MessagesModel.getAllMessages();
 
-    const allMessagesFormatted = allMessages.map((message) => ({
-      ...message,
-      created_at: formatDate(message.created_at),
-    }));
+      const allMessagesFormatted = allMessages.map((message) => ({
+        ...message,
+        created_at: formatDate(message.created_at),
+      }));
 
-    res.render("messages", { title: "Messages", allMessages: allMessagesFormatted });
+      res.render("messages", {
+        title: "Messages",
+        allMessages: allMessagesFormatted,
+        user,
+      });
+    } catch (err) {
+      console.error("Error getting all messages: ", err);
+      return res.render("messages", { title: "Messages" });
+    }
+  },
+  getNewMessagePage: async (req, res) => {
+    console.log("Getting new message page...");
+    let latestMessage;
+    let yourLatestMessage;
+    const user = req?.user || false;
+
+    try {
+      latestMessage = await MessagesModel.getMessageByLatest();
+      if (latestMessage) latestMessage.created_at = formatDate(latestMessage.created_at);
+    } catch (err) {
+      console.error("Error getting latest message: ", err);
+    }
+
+    try {
+      if (user) {
+        yourLatestMessage = await MessagesModel.getUsersLatestMessageById(user.id);
+        if (yourLatestMessage)
+          yourLatestMessage.created_at = formatDate(yourLatestMessage.created_at);
+      }
+    } catch (err) {
+      console.error("Error getting a user's latest message: ", err);
+    }
+
+    res.render("new-message", {
+      title: "New Message",
+      user,
+      latestMessage,
+      yourLatestMessage,
+    });
+  },
+  postNewMessage: async (req, res) => {
+    const { title, text } = req.body;
+    console.log(title, text);
+    try {
+      const result = await MessagesModel.postNewMessage(title, text);
+      console.log("New message posted: ", result);
+      res.redirect("/messages");
+    } catch (err) {
+      console.error("Error during posting of new message: ", err);
+      res.render("new-message", {
+        title: "New Message",
+        errorMsg: "Couldn't post message. Try again later...",
+      });
+    }
   },
 };

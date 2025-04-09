@@ -6,7 +6,10 @@
     <label class="new-message__text-label" for="text">Text</label>
     <textarea name="text" class="new-message__text"></textarea>
     <hr class="post-card__hr" />
-    <div class="post-card__details-wrapper">
+    <div class="new-message__details-wrapper">
+      <% if (locals.errorMsg) { %>
+      <p class="new-message__error"><%= locals.errorMsg  %></p>
+      <% } %>
       <button class="new-message__post-btn btn-filled" type="submit">Post</button>
     </div>
   </form>

@@ -1,8 +1,8 @@
 import { pool } from "../db/pool.js";
 
 const MessagesModel = {
-  async findMessageByLatest() {
-    console.log("Finding last message...");
+  async getMessageByLatest() {
+    console.log("Finding latest message...");
     const queryText = `SELECT m.*, u.username FROM messages m
                        LEFT JOIN users u ON m.user_id = u.id
                        ORDER BY m.created_at DESC LIMIT 1; `;
@@ -21,12 +21,38 @@ const MessagesModel = {
                        LEFT JOIN users u ON m.user_id = u.id
                        ORDER BY m.created_at DESC;
  `;
-
     try {
       const result = await pool.query(queryText);
       return result.rows;
     } catch (err) {
       console.error("Error fetching messages from database: ", err);
+      throw err;
+    }
+  },
+  async getUsersLatestMessageById(id) {
+    const queryText = `SELECT m.*, u.username
+                       FROM messages m
+                       JOIN users u ON m.user_id = u.id
+                       WHERE u.id = $1
+                       ORDER BY m.created_at DESC
+                       LIMIT 1;`;
+    const queryParams = [id];
+    try {
+      const result = await pool.query(queryText, queryParams);
+      return result.rows[0];
+    } catch (err) {
+      console.error("Error getting a user's latest message by id: ", err);
+      throw err;
+    }
+  },
+  async postNewMessage(title, text) {
+    const queryText = `INSERT INTO messages (title, text) VALUES ($1, $2) RETURNING *;`;
+    const queryParams = [title, text];
+    try {
+      const result = await pool.query(queryText, queryParams);
+      return result.rows[0];
+    } catch (err) {
+      console.error("Error during posting of new message: ", err);
       throw err;
     }
   },
