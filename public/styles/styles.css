@@ -262,11 +262,20 @@ header {
   font-weight: var(--font-weight-bold);
 }
 .home__info-card {
+  position: relative;
   padding: var(--space-xl);
   border-radius: var(--space-m);
 
   border: 2px solid var(--clr-secondary);
   background-color: var(--clr-bg-2);
+}
+.logout-tag {
+  position: absolute;
+  top: var(--space-xs);
+  right: var(--space-m);
+  font-size: var(--font-size-s);
+  color: var(--clr-tertiary);
+  font-style: italic;
 }
 .home__info-main-heading {
   padding-bottom: var(--space-s);

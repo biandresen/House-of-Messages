@@ -8,7 +8,8 @@ export const formController = {
   getJoinForm: (req, res) => {
     console.log("Getting join-page...");
     const user = req?.user;
-    if (user) return res.redirect("/");
+    if (!user) return res.redirect("/login");
+    if (user && user.is_member) return res.redirect("/");
     res.render("join", { title: "Join" });
   },
 
@@ -102,6 +103,8 @@ export const formController = {
 
   getLoginForm: (req, res) => {
     console.log("Getting login form...");
+    const user = req?.user;
+    if (user) return res.redirect("/");
     res.render("login", { title: "Login" });
   },
 };

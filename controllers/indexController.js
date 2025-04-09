@@ -18,4 +18,12 @@ export const indexController = {
       res.render("home", { title: "Home", user, errorMsg: err.message || "Something went wrong fetching messages." });
     }
   },
+  logout: (req, res) => {
+    const user = req?.user;
+    if (!user) res.redirect("/login");
+    req.logout((err) => {
+      if (err) return next(err);
+      res.redirect("/login");
+    });
+  },
 };

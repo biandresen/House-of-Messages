@@ -5,3 +5,4 @@ import authenticate from "../middleware/authenticate.js";
 export const indexRouter = Router();
 
 indexRouter.get("/", authenticate.isRegistered, indexController.getHomePage);
+indexRouter.get("/logout", indexController.logout);
