@@ -15,7 +15,11 @@ export const indexController = {
       res.render("home", { title: "Home", user, latestMessage });
     } catch (err) {
       console.log("Error during the getHomePage controller: ", err);
-      res.render("home", { title: "Home", user, errorMsg: err.message || "Something went wrong fetching messages." });
+      res.render("home", {
+        title: "Home",
+        user,
+        errorMsg: err.message || "Something went wrong fetching messages.",
+      });
     }
   },
   logout: (req, res) => {
@@ -25,5 +29,16 @@ export const indexController = {
       if (err) return next(err);
       res.redirect("/login");
     });
+  },
+  getMessagesPage: async (req, res) => {
+    console.log("Getting messages page...");
+    const allMessages = await MessagesModel.getAllMessages();
+
+    const allMessagesFormatted = allMessages.map((message) => ({
+      ...message,
+      created_at: formatDate(message.created_at),
+    }));
+
+    res.render("messages", { title: "Messages", allMessages: allMessagesFormatted });
   },
 };
