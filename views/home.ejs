@@ -28,11 +28,17 @@
     </div>
   <div class="home__buttons-wrapper">
     <div class="home__buttons-wrapper-child">
-      <button class="home__messages-btn btn-filled">Messages</button>
-      <button class="home__new-message-btn btn-filled">New Message</button>
+      <button class="home__messages-btn btn-filled">
+        <a href="/messages">Messages</a>
+      </button>
+      <button class="home__new-message-btn btn-filled">
+        <a href="/new-message">New Message</a>
+      </button>
     </div>
     <% if (!locals.user.is_member) { %>
-    <button class="home__join-btn btn-outlined">Join the Club</button>
+    <button class="home__join-btn btn-outlined">
+      <a href="/join">Join the Club</a>
+    </button>
     <% } %>
   </div>
   <h3 class="home__info-heading">Becoming a house member</h3>
@@ -41,24 +47,32 @@
   </p>
 </section>
 
-<h3 class="home__heading-2 faded">Newest Message</h3>
-<% if (locals.latestMessage && !locals.errorMsg){ %>
+<h3 class="message__heading faded">Latest Message</h3>
+<% if (locals.latestMessage){ %>
 <section class="post-card faded">
   <h4 class="post-card__title"><%= locals.latestMessage.title %></h4>
   <p class="post-card__text"><%= locals.latestMessage.text %></p>
   <hr class="post-card__hr">
   <div class="post-card__details-wrapper">
-    <p class="post-card__posted">
-      <strong>Posted:</strong> <%= locals.latestMessage.created_at %>
-    </p>
-    <p class="post-card__by">
+    <%  if(locals.user && locals.user.is_member) { %>
+      <p class="post-card__posted">
+        <strong>Posted:</strong> <%= locals.latestMessage.created_at %>
+      </p>
+      <p class="post-card__by">
       <strong>By:</strong> <%= locals.latestMessage.username %>
-    </p>
+      </p>
+    <% } else { %>
+      <p class="post-card__posted">
+        <strong>Posted:</strong> *
+      </p>
+      <p class="post-card__by">
+      <strong>By:</strong> *
+      </p>
+    <% } %>
   </div>
 </section>
 <% } else { %>
   <section class="post-card faded">
     <p class="message-error">Sorry. Couldn't fetch the latest message. Try again later...</p>
-    <p>(Error: <%= locals.errorMsg %>)</p>
   </section>
 <% } %>

@@ -1,1 +1,69 @@
-<h2>New Message</h2>
+<h3 class="new-message__heading">New Message</h3>
+<section class="post-card">
+  <form class="new-message__form" action="/new-message" method="POST">
+    <label class="new-message__title-label" for="title">Title</label>
+    <input name="title" class="new-message__input" type="text" required />
+    <label class="new-message__text-label" for="text">Text</label>
+    <textarea name="text" class="new-message__text"></textarea>
+    <hr class="post-card__hr" />
+    <div class="post-card__details-wrapper">
+      <button class="new-message__post-btn btn-filled" type="submit">Post</button>
+    </div>
+  </form>
+</section>
+
+
+<h3 class="message__heading faded">Latest Message</h3>
+<% if (locals.latestMessage){ %>
+<section class="post-card faded">
+  <h4 class="post-card__title"><%= locals.latestMessage.title %></h4>
+  <p class="post-card__text"><%= locals.latestMessage.text %></p>
+  <hr class="post-card__hr">
+  <div class="post-card__details-wrapper">
+    <%  if(locals.user && locals.user.is_member) { %>
+      <p class="post-card__posted">
+        <strong>Posted:</strong> <%= locals.latestMessage.created_at %>
+      </p>
+      <p class="post-card__by">
+      <strong>By:</strong> <%= locals.latestMessage.username %>
+      </p>
+    <% } else { %>
+      <p class="post-card__posted">
+        <strong>Posted:</strong> *
+      </p>
+      <p class="post-card__by">
+      <strong>By:</strong> *
+      </p>
+    <% } %>
+  </div>
+</section>
+<% } else { %>
+  <section class="post-card faded">
+    <p class="message-error">Sorry. Couldn't fetch the latest message. Try again later...</p>
+  </section>
+<% } %>
+
+<% if (locals.user) { %>
+
+<h3 class="message__heading faded">Your Last Message</h3>
+<% if (locals.yourLatestMessage){ %>
+<section class="post-card faded">
+  <h4 class="post-card__title"><%= locals.yourLatestMessage.title %></h4>
+  <p class="post-card__text"><%= locals.yourLatestMessage.text %></p>
+  <hr class="post-card__hr">
+  <div class="post-card__details-wrapper">
+    <p class="post-card__posted">
+      <strong>Posted:</strong> <%= locals.yourLatestMessage.created_at %>
+    </p>
+    <p class="post-card__by">
+      <strong>By:</strong> <%= locals.yourLatestMessage.username %>
+    </p>
+  </div>
+</section>
+<% } else { %>
+  <section class="post-card faded">
+    <p class="message-error">Sorry. Couldn't fetch your latest message. Try again later or post a message if you haven't...</p>
+  </section>
+<% } %>
+
+<% } %>

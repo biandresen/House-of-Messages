@@ -16,12 +16,23 @@
     <p class="post-card__text"><%= message.text %></p>
     <hr class="post-card__hr">
     <div class="post-card__details-wrapper">
+
+    <%  if(locals.user && locals.user.is_member) { %>
       <p class="post-card__posted">
         <strong>Posted:</strong> <%= message.created_at %>
       </p>
       <p class="post-card__by">
       <strong>By:</strong> <%= message.username %>
       </p>
+    <% } else { %>
+      <p class="post-card__posted">
+        <strong>Posted:</strong> *
+      </p>
+      <p class="post-card__by">
+      <strong>By:</strong> *
+      </p>
+    <% } %>
+
     </div>
 </section>
  <% })} else { %>
