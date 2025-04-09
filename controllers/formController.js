@@ -1,9 +1,53 @@
 import { validationResult, matchedData } from "express-validator";
 import { hashPassword } from "../utils/auth.js";
 import { UserModel } from "../models/UserModel.js";
+import "dotenv/config";
 
 // Controller for form handling
 export const formController = {
+  getJoinForm: (req, res) => {
+    console.log("Getting join-page...");
+    const user = req?.user;
+    if (user) return res.redirect("/");
+    res.render("join", { title: "Join" });
+  },
+
+  postJoinForm: async (req, res) => {
+    console.log("Posting join form...");
+    const user = req?.user;
+    if (!user) return res.redirect("/login");
+
+    try {
+      const password = req.body.password.trim();
+      const memberPassword = process.env.MEMBER_PASSWORD;
+      const isMatch = password === memberPassword ? true : false;
+
+      if (!isMatch) {
+        return res.status(400).render("join", {
+          title: "Join",
+          errorMsg: "Wrong Password",
+        });
+      } else {
+        const membershipUpdate = await UserModel.setMembership(user.id);
+        if (!membershipUpdate) {
+          return res.status(500).render("join", {
+            title: "Join",
+            errorMsg: "Correct password, but something went wrong. Try again later...",
+          });
+        } else {
+          console.log(`Membership set for ${user.username}`);
+          return res.redirect("/");
+        }
+      }
+    } catch (err) {
+      console.log("Error during postJoinForm: ", err);
+      return res.status(500).render("join", {
+        title: "Join",
+        errorMsg: "An error occured. Try again later...",
+      });
+    }
+  },
+
   // Render the registration form
   getRegisterForm: (req, res) => {
     console.log("Rendering registration form...");

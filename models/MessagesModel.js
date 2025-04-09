@@ -2,6 +2,7 @@ import { pool } from "../db/pool.js";
 
 const MessagesModel = {
   async findMessageByLatest() {
+    console.log("Finding last message...");
     const queryText = `SELECT m.*, u.username
 FROM messages m
 LEFT JOIN users u ON m.user_id = u.id

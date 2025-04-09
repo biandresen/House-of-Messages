@@ -19,3 +19,6 @@ formRouter.post(
     failureFlash: false,
   })
 );
+
+formRouter.get("/join", formController.getJoinForm);
+formRouter.post("/join", formController.postJoinForm);
