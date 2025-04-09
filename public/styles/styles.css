@@ -555,6 +555,34 @@ header {
   color: var(--clr-text-2);
 }
 
+/** 404-PAGE  */
+.error-404__card {
+  padding: var(--space-xl);
+  border-radius: var(--space-m);
+  border: 2px solid var(--clr-secondary);
+  background-color: var(--clr-bg-2);
+  margin: auto;
+  translate: 0% 25%;
+  text-align: center;
+}
+.error-404__heading {
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+}
+.error-404__sub-heading {
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-m);
+}
+.error-404__text {
+  padding-top: var(--space-l);
+  font-size: var(--font-size-xl);
+}
+.error-404__btn {
+  margin-top: var(--space-s);
+  padding: var(--space-s) var(--space-2xl);
+}
+
 footer {
   width: 100%;
   background-color: var(--clr-bg-2);
