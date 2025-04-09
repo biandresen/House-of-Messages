@@ -12,6 +12,13 @@
 <% if (locals.allMessages) {
   locals.allMessages.forEach(message => { %>
   <section class="post-card">
+
+    <% if (locals.user && !locals.user.is_admin) {%>
+      <form action="/delete" method="POST">
+        <button class="post-card__delete-btn btn-outlined" type="submit" name="id" value="<%=message.id %>">Delete</button>
+      </form>
+    <% } %>
+
     <h4 class="post-card__title"><%= message.title %></h4>
     <p class="post-card__text"><%= message.text %></p>
     <hr class="post-card__hr">

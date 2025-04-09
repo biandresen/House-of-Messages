@@ -45,14 +45,25 @@ const MessagesModel = {
       throw err;
     }
   },
-  async postNewMessage(title, text) {
-    const queryText = `INSERT INTO messages (title, text) VALUES ($1, $2) RETURNING *;`;
-    const queryParams = [title, text];
+  async postNewMessage(id, title, text) {
+    const queryText = `INSERT INTO messages (user_id, title, text) VALUES ($1, $2, $3) RETURNING *;`;
+    const queryParams = [id, title, text];
     try {
       const result = await pool.query(queryText, queryParams);
       return result.rows[0];
     } catch (err) {
       console.error("Error during posting of new message: ", err);
+      throw err;
+    }
+  },
+  async deleteMessage(id) {
+    const queryText = `DELETE FROM messages WHERE id = $1 RETURNING *;`;
+    const queryParams = [id];
+    try {
+      const result = await pool.query(queryText, queryParams);
+      return result.rows[0];
+    } catch (err) {
+      console.log("Error during deletion of message: ", err);
       throw err;
     }
   },

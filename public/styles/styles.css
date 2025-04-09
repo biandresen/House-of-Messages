@@ -337,12 +337,22 @@ header {
 }
 
 .post-card {
+  position: relative;
   padding: var(--space-xl);
   border-radius: var(--space-m);
   margin-bottom: var(--space-xl);
 
   border: 2px solid var(--clr-secondary);
   background-color: var(--clr-bg-2);
+}
+.post-card__delete-btn {
+  position: absolute;
+  margin: 0;
+  padding: var(--space-xs) var(--space-s);
+  top: var(--space-m);
+  right: var(--space-m);
+
+  font-size: 11px;
 }
 .post-card__title {
   font-size: var(--font-size-2xl);

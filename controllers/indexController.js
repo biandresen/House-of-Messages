@@ -56,6 +56,7 @@ export const indexController = {
     let latestMessage;
     let yourLatestMessage;
     const user = req?.user || false;
+    if (!user) return res.redirect("/messages");
 
     try {
       latestMessage = await MessagesModel.getMessageByLatest();
@@ -83,9 +84,11 @@ export const indexController = {
   },
   postNewMessage: async (req, res) => {
     const { title, text } = req.body;
+    const user = req?.user || false;
+    if (!user) return res.redirect("/messages");
     console.log(title, text);
     try {
-      const result = await MessagesModel.postNewMessage(title, text);
+      const result = await MessagesModel.postNewMessage(user.id, title, text);
       console.log("New message posted: ", result);
       res.redirect("/messages");
     } catch (err) {
@@ -94,6 +97,17 @@ export const indexController = {
         title: "New Message",
         errorMsg: "Couldn't post message. Try again later...",
       });
+    }
+  },
+  deleteMessage: async (req, res) => {
+    const messageId = req.body?.id;
+    if (!messageId) return res.redirect("/messages");
+    try {
+      const result = await MessagesModel.deleteMessage(messageId);
+      console.log("Deleted message: ", result);
+      res.redirect("/messages");
+    } catch (err) {
+      console.log("Error during deletion of message: ", err);
     }
   },
 };
