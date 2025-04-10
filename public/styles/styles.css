@@ -11,6 +11,10 @@ body {
   background-color: var(--clr-bg-1);
   color: var(--clr-text-1);
 }
+img[style="display: inline"] {
+  translate: 0 20%;
+  opacity: var(--opacity-mid);
+}
 button {
   cursor: pointer;
   margin: var(--space-xl) 0;
@@ -40,19 +44,70 @@ button {
 /** HEADER */
 header {
   width: 100%;
-  padding: var(--space-2xl) 0;
   background-color: var(--clr-bg-2);
+  height: 55px;
 }
 .header__content {
+  position: relative;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.header__app-name {
+  font-size: var(--font-size-xl);
+  font-family: var(--font-family-secondary);
+}
+.header__menu-button {
+  background-color: transparent;
+}
+.header__menu-icon-open {
+}
+.header__menu-icon-close {
+}
+.header__nav {
+  max-height: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 100%;
+  left: -20px;
+  padding: 0 var(--space-2xl);
+  transition: max-height 0.4s ease;
+  z-index: 100;
+  width: calc(var(--wrapper-width-s));
+
+  background-color: var(--clr-bg-2);
+}
+/* When nav is open */
+.header.nav-open .header__nav {
+  /* max-height: 300px; */
+  border-bottom: 2px solid var(--clr-secondary);
+  box-shadow: var(--shadow-bottom);
+}
+.header__menu-icon-close {
+  display: none;
+}
+.header.nav-open .header__menu-icon-open {
+  display: none;
+}
+.header.nav-open .header__menu-icon-close {
+  display: inline;
+}
+.header__profile-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-s);
 }
 .header__list {
   display: flex;
-  gap: var(--space-2xl);
+  flex-direction: column;
+  gap: var(--space-l);
 }
 .header__list-item {
   list-style: none;
+}
+.header__list-item:last-child {
+  padding-bottom: var(--space-l);
 }
 
 /** REGISTER */
@@ -467,7 +522,7 @@ header {
   font-size: var(--font-size-l);
   border-radius: var(--space-100);
   padding: var(--space-xs) var(--space-m);
-  margin: var(--space-m) 0 var(--space-s) 0;
+  margin: var(--space-m) 0 var(--space-s) auto;
   height: 26px;
   display: flex;
   justify-content: center;
@@ -479,6 +534,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: auto;
 }
 .messages__heading {
   padding-top: var(--space-s);

@@ -1,9 +1,11 @@
 <div class="messages__wrapper">
 <h3 class="messages__heading">Messages</h3>
 <div class="messages__wrapper-child">
+  <% if (locals.user) { %>
   <a class="messages__new-message btn-outlined" href="/new-message">
     <img src="/icons/plus.svg" alt="">
   </a>
+  <% } %>
   <button class="messages__toggle-info">
     <img src="/icons/triangle.svg" alt="">
   </button>
@@ -13,7 +15,7 @@
   locals.allMessages.forEach(message => { %>
   <section class="post-card">
 
-    <% if (locals.user && !locals.user.is_admin) {%>
+    <% if (locals.user && locals.user.is_admin) {%>
       <form action="/delete" method="POST">
         <button class="post-card__delete-btn btn-outlined" type="submit" name="id" value="<%=message.id %>">Delete</button>
       </form>
@@ -33,10 +35,10 @@
       </p>
     <% } else { %>
       <p class="post-card__posted">
-        <strong>Posted:</strong> *
+        <strong>Posted:</strong> <img src="/icons/unauthorized.svg" alt="" style="display: inline">
       </p>
       <p class="post-card__by">
-      <strong>By:</strong> *
+      <strong>By:</strong> <img src="/icons/unauthorized.svg" alt="" style="display: inline">
       </p>
     <% } %>
 
@@ -50,3 +52,7 @@
     <hr class="post-card__hr">
 </section>
   <% } %>
+
+<script>
+
+</script>

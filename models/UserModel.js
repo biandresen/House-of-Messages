@@ -40,27 +40,11 @@ export const UserModel = {
     }
   },
 
-  async createUser({
-    email,
-    username,
-    password,
-    firstName,
-    lastName,
-    is_member,
-    is_admin,
-  }) {
+  async createUser({ email, username, password, firstName, lastName, is_member, is_admin }) {
     console.log("Creating user...");
     const queryText =
       "INSERT INTO users (email, username, password, firstname, lastname, is_member, is_admin) VALUES ($1, $2, $3, $4, $5, $6, $7)";
-    const queryParams = [
-      email,
-      username,
-      password,
-      firstName,
-      lastName,
-      is_member,
-      is_admin,
-    ];
+    const queryParams = [email, username, password, firstName, lastName, is_member, is_admin];
     try {
       await pool.query(queryText, queryParams);
     } catch (err) {
@@ -78,6 +62,19 @@ export const UserModel = {
       return result.rows[0];
     } catch (err) {
       console.error("Error setting membership: ", err);
+      throw err;
+    }
+  },
+
+  async setAdmin(id) {
+    console.log("Setting admin...");
+    const queryText = `UPDATE users SET is_admin = $1 WHERE users.id = $2 RETURNING *`;
+    const queryParams = [true, id];
+    try {
+      const result = await pool.query(queryText, queryParams);
+      return result.rows[0];
+    } catch (err) {
+      console.error("Error setting admin: ", err);
       throw err;
     }
   },

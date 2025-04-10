@@ -1,20 +1,124 @@
-<header>
+<header class="header">
   <div class="wrapper">
     <div class="header__content">
-      <h1 class="header__app-name">App Name</h1>
+      <a href="/">
+        <h1 class="header__app-name">House of Messages</h1>
+      </a>
+      <button class="header__menu-button">
+        <img class="header__menu-icon-open" src="/icons/menu.svg" alt="" />
+        <img class="header__menu-icon-close" src="/icons/cross.svg" alt="" />
+      </button>
       <nav class="header__nav">
         <ul class="header__list">
           <li class="header__list-item">
-            <a href="/">Home</a>
+            <% if (locals.user) { %>
+            <a class="header__profile-wrapper" href="/">
+              <img src="/icons/profile.svg" alt=""/>
+              <p><%= locals.user.username %></p>
+            </a>
+            <% } %>
           </li>
+          <% if (!locals.user) { %>
           <li class="header__list-item">
-            <a href="/">About</a>
+            <a href="/register">Register</a>
           </li>
+          <% } %>
+          <% if (!locals.user) { %>
           <li class="header__list-item">
-            <a href="/">Contact</a>
+            <a href="/login">Login</a>
           </li>
+          <% } else { %>
+            <li class="header__list-item">
+              <a href="/logout">Logout</a>
+            </li>
+          <% } %>
+          <li class="header__list-item">
+            <a href="/messages">Messages</a>
+          </li>
+          <% if (locals.user) { %>
+          <li class="header__list-item">
+            <a href="/new-message">New Message</a>
+          </li>
+          <% } %>
         </ul>
       </nav>
     </div>
   </div>
 </header>
+
+<script>
+  // const headerMenuButton = document.querySelector(".header__menu-button");
+  // const headerMenuIconOpen = document.querySelector(".header__menu-icon-open");
+  // const headerMenuIconClose = document.querySelector(".header__menu-icon-close");
+  // const header = document.querySelector(".header");
+
+  // function toggleHeaderNav() {
+  //   header.classList.toggle("nav-open");
+  // }
+
+  // headerMenuButton.addEventListener("click", toggleHeaderNav);
+
+  const headerMenuButton = document.querySelector(".header__menu-button");
+  const headerMenuIconOpen = document.querySelector(".header__menu-icon-open");
+  const headerMenuIconClose = document.querySelector(".header__menu-icon-close");
+  const headerNav = document.querySelector(".header__nav");
+  const header = document.querySelector(".header");
+
+  function toggleHeaderNav() {
+    const isOpen = header.classList.contains("nav-open");
+
+    if (isOpen) {
+      // collapse
+      headerNav.style.maxHeight = headerNav.scrollHeight + "px"; // set current height
+      requestAnimationFrame(() => {
+        headerNav.style.maxHeight = "0px"; // trigger transition
+      });
+      header.classList.remove("nav-open");
+    } else {
+      // expand
+      header.classList.add("nav-open");
+      headerNav.style.maxHeight = headerNav.scrollHeight + "px";
+    }
+
+    // Toggle icons
+    headerMenuIconOpen.style.display = isOpen ? "block" : "none";
+    headerMenuIconClose.style.display = isOpen ? "none" : "block";
+  }
+
+  headerMenuButton.addEventListener("click", toggleHeaderNav);
+
+  // Reset nav height on resize (in case window size changes)
+  window.addEventListener("resize", () => {
+    if (header.classList.contains("nav-open")) {
+      headerNav.style.maxHeight = headerNav.scrollHeight + "px";
+    }
+  });
+
+  // Close nav when clicking outside
+  document.addEventListener("click", (e) => {
+    const isClickInside = header.contains(e.target);
+    const isMenuOpen = header.classList.contains("nav-open");
+
+    if (!isClickInside && isMenuOpen) {
+      closeNav();
+    }
+  });
+
+  // Close nav when clicking a link inside it
+  document.querySelectorAll(".header__nav a").forEach((link) => {
+    link.addEventListener("click", () => {
+      closeNav();
+    });
+  });
+
+  // Extract close logic into reusable function
+  function closeNav() {
+    headerNav.style.maxHeight = headerNav.scrollHeight + "px";
+    requestAnimationFrame(() => {
+      headerNav.style.maxHeight = "0px";
+    });
+    header.classList.remove("nav-open");
+    headerMenuIconOpen.style.display = "block";
+    headerMenuIconClose.style.display = "none";
+  }
+</script>

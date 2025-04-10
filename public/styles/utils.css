@@ -9,7 +9,7 @@
   --clr-warning: #ffe852;
   --clr-error: #800020;
   --clr-button: #b76e79;
-  --clr-shadow: rgba(0, 0, 0, 0.6);
+  --clr-shadow: rgba(0, 0, 0, 0.4);
   --font-family-primary: "Playfair", "Sans-serif";
   --font-family-secondary: "Cinzel", "Sans-serif";
 
@@ -47,6 +47,7 @@
   --shadow-m: 3px 3px 3px var(--clr-shadow);
   --shadow-l: 4px 4px 4px var(--clr-shadow);
   --shadow-xl: 5px 5px 5px var(--clr-shadow);
+  --shadow-bottom: 0 4px 8px var(--clr-shadow);
 
   --opacity-low: 0.25;
   --opacity-mid: 0.5;
@@ -64,9 +65,10 @@
 .wrapper {
   width: var(--wrapper-width-s);
   margin: 0 auto;
-  flex: 1;
+  height: 100%;
   padding: 0 var(--space-2xl);
-  border: 1px solid red;
+  display: flex;
+  /* border: 1px solid red; */
 }
 .faded {
   opacity: var(--opacity-high);

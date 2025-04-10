@@ -21,14 +21,17 @@ export const formController = {
     try {
       const password = req.body.password.trim();
       const memberPassword = process.env.MEMBER_PASSWORD;
-      const isMatch = password === memberPassword ? true : false;
+      const adminPassword = process.env.ADMIN_PASSWORD;
+      const isMemberMatch = password === memberPassword ? true : false;
+      const isAdminMatch = password === adminPassword ? true : false;
 
-      if (!isMatch) {
+      if (!isMemberMatch && !isAdminMatch) {
         return res.status(400).render("join", {
           title: "Join",
           errorMsg: "Wrong Password",
         });
       } else {
+        if (isAdminMatch) await UserModel.setAdmin(user.id);
         const membershipUpdate = await UserModel.setMembership(user.id);
         if (!membershipUpdate) {
           return res.status(500).render("join", {
