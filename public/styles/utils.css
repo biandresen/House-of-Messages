@@ -68,6 +68,7 @@
   height: 100%;
   padding: 0 var(--space-2xl);
   display: flex;
+  justify-content: center;
   /* border: 1px solid red; */
 }
 .faded {

@@ -5,15 +5,35 @@
   <a class="messages__new-message btn-outlined" href="/new-message">
     <img src="/icons/plus.svg" alt="">
   </a>
+  <% } else { %>
+    <a class="messages__new-message btn-outlined" style="visibility: hidden;" href="/new-message">
+      <img src="/icons/plus.svg" alt="">
+    </a>
   <% } %>
-  <button class="messages__toggle-info">
+  <button class="messages__toggle-messages-nav">
     <img src="/icons/triangle.svg" alt="">
   </button>
 </div>
 </div>
+
+<div class="messages__nav">
+  <h3 class="messages__nav-heading">NAVIGATION</h3>
+  <ol class="messages__nav-list">
+    <% if (locals.allMessages) { %>
+      <% locals.allMessages.forEach(message => { %>
+        <li class="messages__nav-item">
+          <a href="#message-<%= message.id %>" class="messages__nav-link">
+            <%= message.title %>
+          </a>
+        </li>
+      <% }) %>
+    <% } %>
+  </ol>
+</div>
+
 <% if (locals.allMessages) {
   locals.allMessages.forEach(message => { %>
-  <section class="post-card">
+    <section class="post-card" id="message-<%= message.id %>">
 
     <% if (locals.user && locals.user.is_admin) {%>
       <form action="/delete" method="POST">
@@ -54,5 +74,28 @@
   <% } %>
 
 <script>
+  const navToggler = document.querySelector(".messages__toggle-messages-nav");
+  const messagesNav = document.querySelector(".messages__nav");
+  navToggler.style.rotate = "0deg";
 
+function toggleMessagesNav() {
+  messagesNav.classList.toggle("messages__nav-open");
+  navToggler.style.rotate = navToggler.style.rotate === "0deg" ? "180deg" : "0deg";
+  navToggler.classList.toggle('sticky');
+}
+
+navToggler.addEventListener("click", toggleMessagesNav);
+
+document.addEventListener("click", (e) => {
+  const isClickInside = messagesNav.contains(e.target) || navToggler.contains(e.target);
+  if (!isClickInside) {
+    messagesNav.classList.remove("messages__nav-open");
+  }
+});
+
+const navLinks = document.querySelectorAll(".messages__nav-link");
+
+navLinks.forEach(link => {
+  link.addEventListener("click", toggleMessagesNav);
+});
 </script>
