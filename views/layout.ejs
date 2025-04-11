@@ -2,10 +2,12 @@
 <html lang="en">
   <%- include('partials/head') %>
   <body>
-    <%- include('partials/header') %>
-    <div class="wrapper">
-      <main><%- body %></main>
+    <div class="layout">
+      <%- include('partials/header') %>
+      <div class="wrapper" style="height: 100%">
+        <main><%- body %></main>
+      </div>
+      <%- include('partials/footer') %>
     </div>
-    <%- include('partials/footer') %>
   </body>
 </html>

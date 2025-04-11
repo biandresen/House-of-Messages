@@ -2,19 +2,16 @@
 @import url("./utils.css");
 
 /** GENERAL */
-html {
-  scroll-behavior: smooth;
-  height: fit-content;
-}
 body {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
-  /* height: 100%; */
-
+  overflow-x: hidden;
   font-family: var(--font-family-primary);
   background-color: var(--clr-bg-1);
   color: var(--clr-text-1);
+}
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 img[style="display: inline"] {
   translate: 0 20%;
@@ -531,15 +528,15 @@ header {
 .messages__new-message {
   font-size: var(--font-size-l);
   border-radius: var(--space-100);
-  padding: var(--space-xs) var(--space-m);
-  margin: var(--space-m) 0 var(--space-s) auto;
+  padding: var(--space-xs) var(--space-xs);
   height: 26px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .messages__toggle-messages-nav {
-  position: relative;
+  position: fixed;
+  right: 20px;
   background-color: transparent;
   height: 26px;
   display: flex;
@@ -573,7 +570,7 @@ header {
   border-top: 2px solid var(--clr-secondary);
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
   background-color: var(--clr-bg-2);
-  opacity: 0.985;
+  opacity: 0.98;
 }
 .messages__nav-heading {
   padding-top: var(--space-m);
@@ -688,15 +685,52 @@ header {
 }
 
 footer {
-  /* margin-top: auto; */
+  margin-top: auto;
   width: 100%;
   background-color: var(--clr-bg-2);
   text-align: center;
   padding: 10px 0;
+  position: relative;
+  z-index: 100;
 }
 .footer-content {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: var(--space-l);
+}
+.to-the-top:hover {
+  animation: jump 0.8s ease-in-out infinite;
+}
+.github:hover {
+  animation: spin 0.7s ease-in;
+}
+
+@keyframes jump {
+  0% {
+    translate: 0 0%;
+    transform: scale(1);
+  }
+  50% {
+    translate: 0 -50%;
+    transform: scale(1.15);
+  }
+  100% {
+    translate: 0 0%;
+  }
+}
+
+@keyframes spin {
+  0% {
+    rotate: 0deg;
+    transform: scale(1);
+  }
+  50% {
+    rotate: 360deg;
+    transform: scale(1.5);
+  }
+  100% {
+    rotate: 0deg;
+    transform: scale(1);
+  }
 }
