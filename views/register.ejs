@@ -10,6 +10,8 @@
           name="email"
           value="<%= locals.oldInput?.email || '' %>"
           placeholder="name@domain.tld"
+          minlength="5"
+          maxlength="32"
           required
         />
       </div>
@@ -21,6 +23,8 @@
           name="firstName"
           value="<%= locals.oldInput?.firstName || '' %>"
           placeholder="John"
+          minlength="2"
+          maxlength="32"
           required
         />
       </div>
@@ -32,6 +36,8 @@
           name="lastName"
           value="<%= locals.oldInput?.lastName || '' %>"
           placeholder="Doe"
+          minlength="2"
+          maxlength="32"
           required
         />
       </div>
