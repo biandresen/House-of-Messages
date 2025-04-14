@@ -7,12 +7,8 @@ import "dotenv/config";
 export const formController = {
   getJoinForm: (req, res) => {
     console.log("Getting join-page...");
-    const user = req?.user;
-    if (!user) return res.redirect("/login");
-    if (user && user.is_member) return res.redirect("/");
     res.render("join", { title: "Join" });
   },
-
   postJoinForm: async (req, res) => {
     console.log("Posting join form...");
     const user = req?.user;
@@ -51,13 +47,11 @@ export const formController = {
       });
     }
   },
-
   // Render the registration form
   getRegisterForm: (req, res) => {
     console.log("Rendering registration form...");
     res.render("register", { title: "Register" });
   },
-
   // Process registration form submission
   postRegisterForm: async (req, res) => {
     console.log("--------------------------------");
@@ -104,7 +98,6 @@ export const formController = {
     if (!user) res.redirect("/login");
     res.redirect("/logout");
   },
-
   getLoginForm: (req, res) => {
     console.log("Getting login form...");
     const user = req?.user;

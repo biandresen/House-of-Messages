@@ -1,18 +1,20 @@
 import MessagesModel from "../models/MessagesModel.js";
 import { formatDate } from "../utils/formatDate.js";
+import { cleanAndCapitalize } from "../utils/general.js";
 
 export const indexController = {
   getHomePage: async (req, res) => {
     console.log("Getting home page...");
+    let latestMessage;
+    let yourLatestMessage;
     const user = req.user;
     console.log(user);
     if (!user) return res.redirect("/login");
 
     try {
-      const latestMessage = await MessagesModel.getMessageByLatest();
+      latestMessage = await MessagesModel.getMessageByLatest();
       latestMessage.created_at = formatDate(latestMessage.created_at);
       user.created_at = formatDate(user.created_at);
-      res.render("home", { title: "Home", user, latestMessage });
     } catch (err) {
       console.error("Error during the getHomePage controller: ", err);
       res.render("home", {
@@ -21,6 +23,16 @@ export const indexController = {
         errorMsg: err.message || "Something went wrong fetching messages.",
       });
     }
+
+    try {
+      if (user) {
+        yourLatestMessage = await MessagesModel.getUsersLatestMessageById(user.id);
+        if (yourLatestMessage) yourLatestMessage.created_at = formatDate(yourLatestMessage.created_at);
+      }
+    } catch (err) {
+      console.error("Error getting a user's latest message: ", err);
+    }
+    res.render("home", { title: "Home", user, latestMessage, yourLatestMessage });
   },
   get404Page: async (req, res) => {
     console.log("Getting 404-page...");
@@ -72,8 +84,7 @@ export const indexController = {
     try {
       if (user) {
         yourLatestMessage = await MessagesModel.getUsersLatestMessageById(user.id);
-        if (yourLatestMessage)
-          yourLatestMessage.created_at = formatDate(yourLatestMessage.created_at);
+        if (yourLatestMessage) yourLatestMessage.created_at = formatDate(yourLatestMessage.created_at);
       }
     } catch (err) {
       console.error("Error getting a user's latest message: ", err);
@@ -87,7 +98,9 @@ export const indexController = {
     });
   },
   postNewMessage: async (req, res) => {
-    const { title, text } = req.body;
+    let { title, text } = req.body;
+    title = cleanAndCapitalize(title);
+    text = cleanAndCapitalize(text);
     const user = req?.user || false;
     if (!user) return res.redirect("/messages");
     console.log(title, text);

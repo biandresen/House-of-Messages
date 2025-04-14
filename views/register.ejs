@@ -1,107 +1,114 @@
 <h2 class="register__heading">Register</h2>
-<section class="register__form-card">
-  <form class="register__form" action="/register" method="POST">
-    <div class="register__input-wrapper">
-      <label class="register__label" for="email">Email</label>
-      <input
-        class="register__input"
-        type="email"
-        name="email"
-        value="<%= locals.oldInput?.email || '' %>"
-        placeholder="email@placeholder.com"
-        required
-      />
+<div class="register__wrapper">
+  <section class="register__form-card">
+    <form class="register__form" action="/register" method="POST">
+      <div class="register__input-wrapper">
+        <label class="register__label" for="email">Email</label>
+        <input
+          class="register__input"
+          type="email"
+          name="email"
+          value="<%= locals.oldInput?.email || '' %>"
+          placeholder="name@domain.tld"
+          required
+        />
+      </div>
+      <div class="register__input-wrapper">
+        <label class="register__label for="firstName">First name</label>
+        <input
+          class="register__input"
+          type="text"
+          name="firstName"
+          value="<%= locals.oldInput?.firstName || '' %>"
+          placeholder="John"
+          required
+        />
+      </div>
+      <div class="register__input-wrapper">
+        <label class="register__label for="lastName">Last name</label>
+        <input
+          class="register__input"
+          type="text"
+          name="lastName"
+          value="<%= locals.oldInput?.lastName || '' %>"
+          placeholder="Doe"
+          required
+        />
+      </div>
+      <div class="register__input-wrapper">
+        <label class="register__label for="password">Password</label>
+        <input
+          class="register__input"
+          type="password"
+          name="password"
+          placeholder="password"
+          required
+        />
+      </div>
+      <div class="register__input-wrapper">
+        <label class="register__label for="confirmPassword">Confirm password</label>
+        <input
+          class="register__input"
+          type="password"
+          name="confirmPassword"
+          placeholder="password"
+          required
+        />
+      </div>
+      <div class="register__submit-btn-wrapper">
+        <button class="register__submit-btn btn-filled" type="submit">Register</button>
+        <% if (locals.errors) { %>
+        <div class="register__error-message">
+          <% if (locals.errors.length > 0) { %>
+            <ul>
+              <% locals.errors.forEach(error => { %>
+                <li><%= error.msg %></li>
+              <% }) %>
+            </ul>
+          <% } %>
+        </>
+      </div>
+      <% } %>
+      <p class="register__toggle-login">
+        Already have an account?
+        <a class="register__login-link" href="/login">Login</a>
+      </p>
+    </form>
+    <hr class="register__form-card-hr">
+    <div class="register__requirements-wrapper">
+      <p class="register__requirements-info">
+        NB! All fields required for successful registration
+      </p>
     </div>
-    <div class="register__input-wrapper">
-      <label class="register__label for="firstName">First name</label>
-      <input
-        class="register__input"
-        type="text"
-        name="firstName"
-        value="<%= locals.oldInput?.firstName || '' %>"
-        placeholder="John..."
-        required
-      />
-    </div>
-    <div class="register__input-wrapper">
-      <label class="register__label for="lastName">Last name</label>
-      <input
-        class="register__input"
-        type="text"
-        name="lastName"
-        value="<%= locals.oldInput?.lastName || '' %>"
-        placeholder="Doe..."
-        required
-      />
-    </div>
-    <div class="register__input-wrapper">
-      <label class="register__label for="password">Password</label>
-      <input
-        class="register__input"
-        type="password"
-        name="password"
-        placeholder="aLongAndStrongPassword..."
-        required
-      />
-    </div>
-    <div class="register__input-wrapper">
-      <label class="register__label for="confirmPassword">Confirm password</label>
-      <input
-        class="register__input"
-        type="password"
-        name="confirmPassword"
-        placeholder="aLongAndStrongPassword..."
-        required
-      />
-    </div>
-    <div class="register__submit-btn-wrapper">
-      <button class="register__submit-btn btn-filled" type="submit">Register</button>
-      <% if (locals.errors) { %>
-      <div class="register__error-message">
-        <% if (locals.errors.length > 0) { %>
-          <ul>
-            <% locals.errors.forEach(error => { %>
-              <li><%= error.msg %></li>
-            <% }) %>
-          </ul>
-        <% } %>
-      </>
-    </div>
-    <% } %>
-    <p class="register__toggle-login">
-      Already have an account?
-      <a class="register__login-link" href="/login">Login</a>
-    </p>
-  </form>
-  <hr class="register__form-card-hr">
-  <div class="register__requirements-wrapper">
-    <p class="register__requirements-info">
-      NB! All fields are required for successful registration
-    </p>
-  </div>
-</section>
+  </section>
 
-<section class="register__info-card">
-  <h2 class="register__info-main-heading">Information</h2>
-  <h3 class="register__info-heading">How to register</h3>
-  <p class="register__info-text">
-    In order to register you must fill out the register form correctly on the
-    left side of this page and click the ‘register’ button. You will get
-    notified on this page if the registration was successful or not. If it
-    wasn’t, follow the corrections provided.
-  </p>
-  <h3 class="register__info-heading">What to expect</h3>
-  <p class="register__info-text">
-    Without a registration you may not see any posted messages. By registering
-    and logging in you may view all messages, but not when they were posted or
-    who posted them. In order to do that you must become a legitimate house
-    member.
-  </p>
-  <h3 class="register__info-heading">Becoming a house member</h3>
-  <p class="register__info-text">
-    Becoming a house member requires you to insert a secret password into the
-    ‘Become a member’ field on your ‘home’ page. The idea is that you stick
-    around and get noticed until a house member deem you worthy as a member and
-    gives you the secret password...
-  </p>
-</section>
+  <section class="register__info-card">
+    <h2 class="register__info-main-heading">Information</h2>
+    <h3 class="register__info-heading">How to register</h3>
+    <p class="register__info-text">
+      In order to register you must fill out the register form correctly on the
+      left side of this page and click the ‘register’ button. You will get
+      notified on this page if the registration was successful or not. If it
+      wasn’t, follow the corrections provided.
+    </p>
+    <h3 class="register__info-heading">What to expect</h3>
+    <p class="register__info-text">
+      Without a registration you may not see any posted messages. By registering
+      and logging in you may view all messages, but not when they were posted or
+      who posted them. In order to do that you must become a legitimate house
+      member.
+    </p>
+    <h3 class="register__info-heading">Becoming a house member</h3>
+    <p class="register__info-text">
+      Becoming a house member requires you to insert a secret password into the
+      ‘Become a member’ field on your ‘home’ page. The idea is that you stick
+      around and get noticed until a house member deem you worthy as a member and
+      gives you the secret password...
+    </p>
+  </section>
+</div>
+
+<script>
+  const registerInput = document.querySelector(".register__input")
+  registerInput.focus()
+</script>

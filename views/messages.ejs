@@ -15,63 +15,67 @@
   </button>
 </div>
 </div>
+<div class="messages__flex-wrapper">
+  <div class="messages__nav">
+    <h3 class="messages__nav-heading">NAVIGATION</h3>
+    <ol class="messages__nav-list">
+      <% if (locals.allMessages) { %>
+        <% locals.allMessages.forEach(message => { %>
+          <li class="messages__nav-item">
+            <a href="#message-<%= message.id %>" class="messages__nav-link">
+              <%= message.title %>
+            </a>
+          </li>
+        <% }) %>
+      <% } %>
+    </ol>
+  </div>
+<div class="messages__post-card-wrapper">
+  <% if (locals.allMessages) {
+    locals.allMessages.forEach(message => { %>
+      <section class="post-card" id="message-<%= message.id %>">
 
-<div class="messages__nav">
-  <h3 class="messages__nav-heading">NAVIGATION</h3>
-  <ol class="messages__nav-list">
-    <% if (locals.allMessages) { %>
-      <% locals.allMessages.forEach(message => { %>
-        <li class="messages__nav-item">
-          <a href="#message-<%= message.id %>" class="messages__nav-link">
-            <%= message.title %>
-          </a>
-        </li>
-      <% }) %>
+      <% if (locals.user && locals.user.is_admin) {%>
+        <form action="/delete" method="POST">
+          <button class="post-card__delete-btn btn-outlined" type="submit" name="id" value="<%=message.id %>">Delete</button>
+        </form>
+      <% } %>
+
+      <h4 class="post-card__title"><%= message.title %></h4>
+      <p class="post-card__text"><%= message.text %></p>
+      <hr class="post-card__hr">
+      <div class="post-card__details-wrapper">
+
+      <%  if(locals.user && locals.user.is_member) { %>
+        <p class="post-card__posted">
+          <strong>Posted:</strong> <%= message.created_at %>
+        </p>
+        <p class="post-card__by">
+        <strong>By:</strong> <%= message.username %>
+        </p>
+      <% } else { %>
+        <p class="post-card__posted">
+          <strong>Posted:</strong> <img src="/icons/unauthorized.svg" alt="" style="display: inline">
+        </p>
+        <p class="post-card__by">
+        <strong>By:</strong> <img src="/icons/unauthorized.svg" alt="" style="display: inline">
+        </p>
+      <% } %>
+
+      </div>
+  </section>
+   <% })} else { %>
+    <section class="post-card">
+      <h4 class="post-card__title">Error</h4>
+      <p class="post-card__text">No messages found</p>
+      <p class="post-card__text">Try again later...</p>
+      <hr class="post-card__hr">
+  </section>
     <% } %>
-  </ol>
+</div>
 </div>
 
-<% if (locals.allMessages) {
-  locals.allMessages.forEach(message => { %>
-    <section class="post-card" id="message-<%= message.id %>">
 
-    <% if (locals.user && locals.user.is_admin) {%>
-      <form action="/delete" method="POST">
-        <button class="post-card__delete-btn btn-outlined" type="submit" name="id" value="<%=message.id %>">Delete</button>
-      </form>
-    <% } %>
-
-    <h4 class="post-card__title"><%= message.title %></h4>
-    <p class="post-card__text"><%= message.text %></p>
-    <hr class="post-card__hr">
-    <div class="post-card__details-wrapper">
-
-    <%  if(locals.user && locals.user.is_member) { %>
-      <p class="post-card__posted">
-        <strong>Posted:</strong> <%= message.created_at %>
-      </p>
-      <p class="post-card__by">
-      <strong>By:</strong> <%= message.username %>
-      </p>
-    <% } else { %>
-      <p class="post-card__posted">
-        <strong>Posted:</strong> <img src="/icons/unauthorized.svg" alt="" style="display: inline">
-      </p>
-      <p class="post-card__by">
-      <strong>By:</strong> <img src="/icons/unauthorized.svg" alt="" style="display: inline">
-      </p>
-    <% } %>
-
-    </div>
-</section>
- <% })} else { %>
-  <section class="post-card">
-    <h4 class="post-card__title">Error</h4>
-    <p class="post-card__text">No messages found</p>
-    <p class="post-card__text">Try again later...</p>
-    <hr class="post-card__hr">
-</section>
-  <% } %>
 
 <script>
   const navToggler = document.querySelector(".messages__toggle-messages-nav");

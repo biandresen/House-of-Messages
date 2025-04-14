@@ -14,7 +14,7 @@
             <% if (locals.user) { %>
             <a class="header__profile-wrapper" href="/">
               <img src="/icons/profile.svg" alt=""/>
-              <p><%= locals.user.username %></p>
+              <p class="header__profile-username"><%= locals.user.username %></p>
             </a>
             <% } %>
           </li>
@@ -47,22 +47,12 @@
 </header>
 
 <script>
-  // const headerMenuButton = document.querySelector(".header__menu-button");
-  // const headerMenuIconOpen = document.querySelector(".header__menu-icon-open");
-  // const headerMenuIconClose = document.querySelector(".header__menu-icon-close");
-  // const header = document.querySelector(".header");
-
-  // function toggleHeaderNav() {
-  //   header.classList.toggle("nav-open");
-  // }
-
-  // headerMenuButton.addEventListener("click", toggleHeaderNav);
-
   const headerMenuButton = document.querySelector(".header__menu-button");
   const headerMenuIconOpen = document.querySelector(".header__menu-icon-open");
   const headerMenuIconClose = document.querySelector(".header__menu-icon-close");
   const headerNav = document.querySelector(".header__nav");
   const header = document.querySelector(".header");
+
 
   function toggleHeaderNav() {
     const isOpen = header.classList.contains("nav-open");

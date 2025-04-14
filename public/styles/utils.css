@@ -20,8 +20,11 @@
   --space-xl: 15px;
   --space-2xl: 20px;
   --space-3xl: 30px;
+  --space-4xl: 40px;
+  --space-5xl: 50px;
   --space-100: 100px;
 
+  --line-height-ss: 0.75;
   --line-height-xs: 1;
   --line-height-s: 1.2;
   --line-height-m: 1.5;
@@ -54,22 +57,16 @@
   --opacity-high: 0.75;
   --opacity-full: 1;
 
-  --wrapper-width-s: 350px;
-  --wrapper-width-m: 500px;
-  --wrapper-width-l: 750px;
-  --wrapper-width-xl: 1000px;
-  --wrapper-width-2xl: 1250px;
-  --wrapper-width-3xl: 1500px;
+  --wrapper-width-l: 768px;
+  --wrapper-width-xl: 1200px;
 }
 
 .wrapper {
-  width: var(--wrapper-width-s);
+  max-width: var(--wrapper-width-l);
   margin: 0 auto;
-  /* height: 100%; */
   padding: 0 var(--space-2xl);
   display: flex;
   justify-content: center;
-  /* border: 1px solid red; */
 }
 .faded {
   opacity: var(--opacity-high);
