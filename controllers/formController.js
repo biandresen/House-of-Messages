@@ -54,7 +54,6 @@ export const formController = {
   },
   // Process registration form submission
   postRegisterForm: async (req, res) => {
-    console.log("--------------------------------");
     console.log("Processing registration form...");
     const page = "register";
     const user = req?.user || false;
@@ -69,7 +68,7 @@ export const formController = {
     }
 
     const validatedData = matchedData(req);
-    console.log("Registration data validated:", validatedData);
+    console.log("Registration data validated");
 
     // Check if email already exists
     const existingUser = await checkForExistingUser(res, validatedData, page);
@@ -96,7 +95,6 @@ export const formController = {
     if (!userCreated) return;
 
     if (!user) res.redirect("/login");
-    res.redirect("/logout");
   },
   getLoginForm: (req, res) => {
     console.log("Getting login form...");

@@ -13,6 +13,13 @@ export const indexController = {
 
     try {
       latestMessage = await MessagesModel.getMessageByLatest();
+      if (!latestMessage) {
+        return res.render("home", {
+          title: "Home",
+          user,
+          errorMsg: "Didn't find any latest message.",
+        });
+      }
       latestMessage.created_at = formatDate(latestMessage.created_at);
       user.created_at = formatDate(user.created_at);
     } catch (err) {
@@ -103,7 +110,6 @@ export const indexController = {
     text = cleanAndCapitalize(text);
     const user = req?.user || false;
     if (!user) return res.redirect("/messages");
-    console.log(title, text);
     try {
       const result = await MessagesModel.postNewMessage(user.id, title, text);
       console.log("New message posted: ", result);

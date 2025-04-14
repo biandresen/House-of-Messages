@@ -174,7 +174,8 @@ header {
 }
 .register__submit-btn {
 }
-.register__error-message {
+.register__error-message,
+.login__error-message {
   border-radius: var(--space-m);
   margin: 0 0 var(--space-m) 0;
   padding: var(--space-m) var(--space-xl);
@@ -290,6 +291,7 @@ header {
 }
 .login__toggle-login {
   font-style: italic;
+  margin-bottom: 5px;
 }
 .login__login-link {
   text-decoration: underline;

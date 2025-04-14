@@ -42,6 +42,9 @@
         <a class="login__login-link" href="/register">Register</a>
       </p>
     </form>
+    <% if (locals.error && locals.error.length > 0) { %>
+      <div class="login__error-message"><%= locals.error %></div>
+    <% } %>
     <hr class="login__form-card-hr">
     <div class="login__requirements-wrapper">
       <p class="login__requirements-info">

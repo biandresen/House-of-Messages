@@ -9,6 +9,7 @@ import "./utils/passport-config.js";
 import { formRouter } from "./routes/formRouter.js";
 import { indexRouter } from "./routes/indexRouter.js";
 import { indexController } from "./controllers/indexController.js";
+import flash from "connect-flash";
 
 const app = express();
 
@@ -16,6 +17,7 @@ const app = express();
 const PgSession = connectPgSimple(session);
 
 // Middleware
+app.use(flash());
 app.use(expressLayouts);
 app.set("layout", "layout");
 app.set("view engine", "ejs");
@@ -40,6 +42,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
+// Make flash messages available in all views
+app.use((req, res, next) => {
+  res.locals.error = req.flash("error");
+  next();
+});
+
 app.use(formRouter);
 app.use(indexRouter);
 app.use(indexController.get404Page);

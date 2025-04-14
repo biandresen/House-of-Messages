@@ -16,7 +16,7 @@ formRouter.post(
   passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/login",
-    failureFlash: false,
+    failureFlash: true,
   })
 );
 
