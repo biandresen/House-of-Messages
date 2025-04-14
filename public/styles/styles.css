@@ -1063,6 +1063,24 @@ footer {
     min-height: 180px;
     max-width: 100%;
   }
+
+  /** 404-PAGE  */
+  .error-404__card {
+    padding: var(--space-3xl);
+  }
+  .error-404__heading {
+    font-size: var(--font-size-4xl);
+  }
+  .error-404__sub-heading {
+    font-size: var(--font-size-2xl);
+  }
+  .error-404__text {
+    padding-top: var(--space-l);
+    font-size: var(--font-size-2xl);
+  }
+  .error-404__btn {
+    font-size: var(--font-size-xl);
+  }
 }
 
 /* Tablet Screen Range */
