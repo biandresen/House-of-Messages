@@ -34,6 +34,14 @@ button:hover,
 a:hover {
   filter: brightness(1.18);
 }
+.read-more-btn {
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-semi);
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  color: var(--clr-tertiary);
+}
 .btn-filled {
   background-color: var(--clr-tertiary);
   color: var(--clr-bg-1);
@@ -403,6 +411,7 @@ header {
   border-radius: var(--space-m);
   margin-bottom: var(--space-3xl);
   max-width: 600px;
+  width: 90vw;
 
   border: 2px solid var(--clr-secondary);
   background-color: var(--clr-bg-2);
@@ -430,6 +439,7 @@ header {
   margin-top: -12px;
 }
 .post-card__text {
+  word-wrap: break-word;
   font-size: var(--font-size-xm);
   padding-bottom: var(--space-m);
   line-height: var(--line-height-s);
@@ -639,6 +649,8 @@ header {
   font-weight: var(--font-weight-bold);
 }
 .new-message__text {
+  resize: none;
+  overflow: hidden;
   display: block;
   text-indent: 5px;
   padding: 0 var(--space-s);
@@ -752,12 +764,18 @@ footer {
     transform: scale(1);
   }
 }
-
 /* Mobile Phone Screen Range */
 @media (min-width: 768px) {
   /** GENERAL  */
   .post-card {
     max-width: 100%;
+  }
+  .post-card.faded {
+    max-width: 100%;
+    width: 600px;
+  }
+  .read-more-btn {
+    font-size: var(--font-size-s);
   }
   /** HEADER  */
   .header__app-name {
@@ -1026,13 +1044,24 @@ footer {
     display: flex;
     gap: var(--space-5xl);
   }
+  .new-message__wrapper .post-card {
+    margin-bottom: 0;
+  }
   .new-message__section-wrapper {
     margin-top: -65px;
     width: 50%;
   }
+  .new-message__form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .post-card__hr {
+    margin-top: auto;
+  }
   .new-message__text {
-    min-height: 120px;
-    max-width: 330px;
+    min-height: 180px;
+    max-width: 100%;
   }
 }
 

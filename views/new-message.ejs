@@ -3,7 +3,7 @@
   <section class="post-card">
     <form class="new-message__form" action="/new-message" method="POST">
       <label class="new-message__title-label" for="title">Title</label>
-      <input name="title" class="new-message__input" type="text" required />
+      <input name="title" class="new-message__input" type="text" maxlength="40" required />
       <label class="new-message__text-label" for="text">Text</label>
       <textarea name="text" class="new-message__text"></textarea>
       <hr class="post-card__hr" />
@@ -72,3 +72,14 @@
   <% } %>
 </div>
 </div>
+
+<script src="/scripts/postCard.js"></script>
+<script>
+  const text = document.querySelector(".new-message__text")
+
+  text.addEventListener("input", () => {
+    text.style.height = "auto"; // Reset height
+    text.style.height = text.scrollHeight + "px"; // Set to content height
+});
+
+</script>
