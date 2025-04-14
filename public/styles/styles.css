@@ -773,6 +773,10 @@ footer {
   .post-card {
     max-width: 100%;
   }
+  .post-card__title {
+    width: 100%;
+    max-width: 600px;
+  }
   .post-card.faded {
     max-width: 100%;
     width: 600px;
