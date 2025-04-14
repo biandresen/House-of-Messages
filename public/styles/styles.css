@@ -1064,6 +1064,7 @@ footer {
   }
   .new-message__text {
     min-height: 180px;
+    margin-bottom: 10px;
     max-width: 100%;
   }
 

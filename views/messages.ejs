@@ -30,8 +30,9 @@
       <% } %>
     </ol>
   </div>
+
 <div class="messages__post-card-wrapper">
-  <% if (locals.allMessages) {
+  <% if (locals.allMessages && locals.allMessages.length > 0) {
     locals.allMessages.forEach(message => { %>
       <section class="post-card" id="message-<%= message.id %>">
 
