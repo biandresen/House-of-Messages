@@ -397,6 +397,7 @@ header {
 .home__join-btn {
   margin-top: 0;
   margin-bottom: var(--space-2xl);
+  width: 100%;
 }
 .home__info-heading {
   font-size: var(--font-size-l);
