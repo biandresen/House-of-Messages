@@ -11,3 +11,15 @@
     </div>
   </div>
 </footer>
+
+<script>
+  const toTopIcon = document.querySelector(".to-the-top");
+  let iconClicked = false;
+
+  toTopIcon.addEventListener("click", () => {
+    if (!iconClicked) {
+      toTopIcon.classList.add("icon-clicked");
+    }
+    iconClicked = true;
+  });
+</script>

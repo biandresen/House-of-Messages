@@ -12,7 +12,13 @@ export const registerUserSchema = checkSchema({
       options: { min: 3, max: 32 },
       errorMessage: "Email must be between 3 and 32 characters",
     },
-    normalizeEmail: true,
+    normalizeEmail: {
+      options: {
+        gmail_remove_dots: false,
+        gmail_remove_subaddress: false,
+        gmail_convert_googlemaildotcom: false,
+      },
+    },
     notEmpty: {
       errorMessage: "Email is required",
     },

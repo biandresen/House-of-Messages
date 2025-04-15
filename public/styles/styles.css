@@ -58,7 +58,7 @@ a:hover {
 .btn-outlined {
   background-color: transparent;
   border: 1px solid var(--clr-button);
-  color: var(--clr-tertiary);
+  color: var(--clr-button);
 }
 .message__heading {
   padding-top: var(--space-xl);
@@ -66,6 +66,9 @@ a:hover {
   font-family: var(--font-family-secondary);
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
+}
+.theme-text {
+  padding-left: 5px;
 }
 
 /** HEADER */
@@ -112,7 +115,6 @@ header {
 /* When nav is open */
 .header.nav-open .header__nav {
   border-bottom: 2px solid var(--clr-secondary);
-  box-shadow: var(--shadow-bottom);
 }
 .header__menu-icon-close {
   display: none;
@@ -144,6 +146,9 @@ header {
   margin: 0;
   padding: 0;
   border: none;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-normal);
+  color: var(--clr-text-1);
 }
 .header__list-item:last-child {
   padding-bottom: var(--space-l);
@@ -404,6 +409,7 @@ header {
 }
 .home__value {
   font-size: var(--font-size-m);
+  word-break: break-all;
 }
 .home__buttons-wrapper {
   display: flex;
@@ -595,6 +601,7 @@ header {
   justify-content: center;
   align-items: center;
   margin-right: auto;
+  border: 2px solid var(--clr-button);
 }
 .messages__toggle-messages-nav {
   position: fixed;
@@ -633,6 +640,14 @@ header {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-2xl);
+}
+.messages__toggle-messages-nav::before {
+  content: "Click";
+  color: var(--clr-text-1);
+  margin-right: 5px;
+}
+.messages__toggle-messages-nav.icon-clicked::before {
+  content: "";
 }
 .messages__nav-list {
   padding-left: var(--space-2xl);
@@ -768,8 +783,19 @@ footer {
   align-items: center;
   gap: var(--space-l);
 }
+.to-the-top {
+  display: flex;
+}
 .to-the-top:hover {
   animation: jump 0.8s ease-in-out infinite;
+}
+.to-the-top::after {
+  content: "Go to Top";
+  color: var(--clr-text-1);
+  margin-left: 5px;
+}
+.to-the-top.icon-clicked::after {
+  content: "";
 }
 .github:hover {
   animation: spin 0.7s ease-in;
@@ -823,7 +849,7 @@ footer {
   }
   /** HEADER  */
   .header__app-name {
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-xl);
   }
   .header.nav-open .header__nav {
     border-bottom: none;
@@ -979,8 +1005,11 @@ footer {
     gap: var(--space-5xl);
   }
   .home__latest-message-wrapper {
-    margin-top: -67px;
+    margin-top: -60px;
     width: 160%;
+  }
+  .home__latest-message-wrapper h3:first-child {
+    padding-bottom: 8px;
   }
   .home__info-main-heading {
     font-size: var(--font-size-2xl);
@@ -1053,13 +1082,16 @@ footer {
     max-width: 60%;
   }
   .messages__new-message {
-    padding-left: var(--space-2xl);
+    padding: 0 var(--space-xl);
     height: 28px;
     margin-right: auto;
     margin-left: 32px;
     font-weight: var(--font-weight-bold);
     color: var(--clr-bg-1);
-    background-color: var(--clr-tertiary);
+    background-color: var(--clr-button);
+  }
+  .new-message-icon {
+    display: none;
   }
   .messages__new-message::before {
     content: "NEW MESSAGE";
@@ -1101,6 +1133,9 @@ footer {
   .new-message__section-wrapper {
     margin-top: -60px;
     width: 50%;
+  }
+  .new-message__section-wrapper h3:first-child {
+    padding-bottom: 8px;
   }
   .new-message__form {
     display: flex;

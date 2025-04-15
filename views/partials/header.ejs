@@ -19,7 +19,7 @@
             <% } %>
           </li>
           <li class="header__list-item">
-            <button id="theme-toggle" class="btn-outlined">🌗</button>
+            <button id="theme-toggle" class="btn-outlined">🌗<span class="theme-text"></span></button>
           </li>
           <% if (!locals.user) { %>
           <li class="header__list-item">
@@ -58,12 +58,25 @@
   const header = document.querySelector(".header");
 
   const toggleBtn = document.getElementById('theme-toggle');
-  const root = document.documentElement;
+const themeText = document.querySelector(".theme-text");
+const root = document.documentElement;
+
+// Function to set the theme text
+function updateThemeText(theme) {
+  themeText.textContent = theme === 'dark' ? 'Light' : 'Dark';
+}
 
 // Load theme from storage (or default to dark)
 const savedTheme = localStorage.getItem('theme');
+
 if (savedTheme) {
   root.setAttribute('data-theme', savedTheme);
+  updateThemeText(savedTheme);
+} else {
+  const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+  const defaultTheme = prefersLight ? 'light' : 'dark';
+  root.setAttribute('data-theme', defaultTheme);
+  updateThemeText(defaultTheme);
 }
 
 // Toggle between dark and light
@@ -72,12 +85,9 @@ toggleBtn.addEventListener('click', () => {
   const newTheme = current === 'light' ? 'dark' : 'light';
   root.setAttribute('data-theme', newTheme);
   localStorage.setItem('theme', newTheme);
+  updateThemeText(newTheme);
 });
 
-if (!savedTheme) {
-  const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-  root.setAttribute('data-theme', prefersLight ? 'light' : 'dark');
-}
 
   function toggleHeaderNav() {
     const isOpen = header.classList.contains("nav-open");

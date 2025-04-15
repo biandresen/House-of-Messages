@@ -34,7 +34,11 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 1000 * 60 * 60 * 24 * 7 }, // 1 week
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
+      sameSite: "lax",
+      secure: process.env.NODE_ENV === "production", // secure should be true in production
+    },
   })
 );
 // Passport middleware
