@@ -8,6 +8,7 @@ export const indexController = {
     let latestMessage;
     let yourLatestMessage;
     const user = req.user;
+    user.created_at = formatDate(user.created_at);
     console.log(user);
     if (!user) return res.redirect("/login");
 
@@ -21,7 +22,6 @@ export const indexController = {
         });
       }
       latestMessage.created_at = formatDate(latestMessage.created_at);
-      user.created_at = formatDate(user.created_at);
     } catch (err) {
       console.error("Error during the getHomePage controller: ", err);
       res.render("home", {
