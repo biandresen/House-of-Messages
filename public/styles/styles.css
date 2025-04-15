@@ -983,6 +983,9 @@ footer {
   .home__join-btn {
     font-size: var(--font-size-l);
   }
+  .home__info-card {
+    min-width: 380px;
+  }
   .home__info-heading {
     font-size: var(--font-size-xl);
   }
