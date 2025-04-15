@@ -5,6 +5,9 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)  
 ![Authentication](https://img.shields.io/badge/User-Authentication-blueviolet?style=for-the-badge)  
 
+![image](https://github.com/user-attachments/assets/ecaaffd6-54ee-4117-894a-1e721a338904)
+![image](https://github.com/user-attachments/assets/7f033a31-eb6f-497c-8b46-340c4b250716)
+
 ---
 
 ## 📜 Project Overview
@@ -62,6 +65,11 @@ This app is deployed on **Railway**, including its PostgreSQL database.
 
 - 🎨 **Figma**: Used Figma to design the user interface, focusing on simplicity and clarity for both desktop and mobile users  
 - 🗂️ **Eraser.io**: Created an ERD (Entity Relationship Diagram) to visualize and plan the database structure, ensuring a clear one-to-many relationship between users and messages  
+
+![image](https://github.com/user-attachments/assets/5593cd5a-4d24-42f0-8658-754ccdabdda1)
+![image](https://github.com/user-attachments/assets/24a439fe-8097-4cbc-bcf7-cc943a3c75e9)
+
+
 
 ## 🧠 What I Learned
 
