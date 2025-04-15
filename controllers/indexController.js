@@ -55,9 +55,10 @@ export const indexController = {
   },
   getMessagesPage: async (req, res) => {
     console.log("Getting messages page...");
+    const order = req.query.order === "ASC" ? "ASC" : "DESC"; // default to DESC
     const user = req?.user || false;
     try {
-      const allMessages = await MessagesModel.getAllMessages();
+      const allMessages = await MessagesModel.getAllMessages(order);
 
       const allMessagesFormatted = allMessages.map((message) => ({
         ...message,
@@ -68,6 +69,7 @@ export const indexController = {
         title: "Messages",
         allMessages: allMessagesFormatted,
         user,
+        currentOrder: order,
       });
     } catch (err) {
       console.error("Error getting all messages: ", err);

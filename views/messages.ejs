@@ -1,5 +1,10 @@
 <div class="messages__wrapper">
-<h3 class="messages__heading">Messages</h3>
+  <div class="filter-wrapper">
+    <h3 class="messages__heading">Messages</h3>
+    <button id="filter-toggle">
+      Filter: <%= locals.currentOrder === "DESC" ? "Newest" : "Oldest" %>
+    </button>
+  </div>
 <div class="messages__wrapper-child">
   <% if (locals.user) { %>
   <a class="messages__new-message btn-outlined" href="/new-message">
@@ -75,6 +80,25 @@
 
 <script src="/scripts/postCard.js"></script>
 <script>
+
+  const button = document.getElementById('filter-toggle');
+
+  button.addEventListener('click', () => {
+    // Get current URL and its query params
+    const url = new URL(window.location.href);
+    const currentOrder = url.searchParams.get("order") || "DESC";
+
+    // Toggle the order
+    const newOrder = currentOrder === "DESC" ? "ASC" : "DESC";
+
+    // Update the query param
+    url.searchParams.set("order", newOrder);
+
+    // Reload with new URL
+    window.location.href = url.toString();
+  });
+
+
   const navToggler = document.querySelector(".messages__toggle-messages-nav");
   let navIconClicked = false;
   const messagesNav = document.querySelector(".messages__nav");

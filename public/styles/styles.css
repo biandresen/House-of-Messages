@@ -578,7 +578,24 @@ header {
   font-weight: var(--font-weight-bold);
   margin-right: var(--space-l);
   position: relative;
-  top: 6px;
+  top: 16px;
+}
+.filter-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 80px;
+}
+#filter-toggle {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-l);
+  position: relative;
+  top: -25px;
+  left: -10px;
+  color: var(--clr-button);
+  background-color: transparent;
+}
+.messages__post-card-wrapper .post-card:first-child {
+  margin-top: 16px;
 }
 .messages__wrapper {
   display: flex;
@@ -834,6 +851,7 @@ footer {
   /** GENERAL  */
   .post-card {
     max-width: 100%;
+    margin-left: 15px;
   }
   .post-card__title {
     width: 100%;
@@ -1085,7 +1103,6 @@ footer {
     padding: 0 var(--space-xl);
     height: 28px;
     margin-right: auto;
-    margin-left: 32px;
     font-weight: var(--font-weight-bold);
     color: var(--clr-bg-1);
     background-color: var(--clr-button);
@@ -1106,6 +1123,7 @@ footer {
     width: 40%;
     transform: translateX(0%);
     transition: none;
+    margin-top: 15px;
 
     border: 2px solid var(--clr-secondary);
     border-radius: var(--space-l);
@@ -1174,6 +1192,9 @@ footer {
 @media (min-width: 1200px) {
   .wrapper {
     max-width: var(--wrapper-width-xl);
+  }
+  .post-card {
+    margin-left: 0;
   }
   .post-card.faded {
     width: 600px;

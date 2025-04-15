@@ -15,11 +15,11 @@ const MessagesModel = {
       throw err;
     }
   },
-  async getAllMessages() {
+  async getAllMessages(order) {
     console.log("Getting all messages...");
     const queryText = `SELECT m.*, u.username FROM messages m
                        LEFT JOIN users u ON m.user_id = u.id
-                       ORDER BY m.created_at DESC;
+                       ORDER BY m.created_at ${order};
  `;
     try {
       const result = await pool.query(queryText);
