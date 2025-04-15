@@ -34,7 +34,7 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 600000 }, // 10 minutes
+    cookie: { maxAge: 1000 * 60 * 60 * 24 * 7 }, // 1 week
   })
 );
 // Passport middleware

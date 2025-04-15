@@ -58,7 +58,7 @@ a:hover {
 }
 .message__heading {
   padding-top: var(--space-xl);
-  padding-bottom: var(--space-m);
+  padding-bottom: var(--space-xl);
   font-family: var(--font-family-secondary);
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
@@ -142,10 +142,12 @@ header {
 /** REGISTER */
 .register__heading {
   padding-top: var(--space-s);
-  padding-bottom: var(--space-m);
+  padding-bottom: var(--space-xl);
   font-family: var(--font-family-secondary);
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
+  position: relative;
+  top: 6px;
 }
 .register__form-card {
   padding: var(--space-xl);
@@ -245,10 +247,12 @@ header {
 /** LOGIN */
 .login__heading {
   padding-top: var(--space-s);
-  padding-bottom: var(--space-m);
+  padding-bottom: var(--space-xl);
   font-family: var(--font-family-secondary);
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
+  position: relative;
+  top: 6px;
 }
 .login__form-card {
   padding: var(--space-xl);
@@ -349,10 +353,12 @@ header {
 /** HOME  */
 .home__heading {
   padding-top: var(--space-s);
-  padding-bottom: var(--space-m);
+  padding-bottom: var(--space-xl);
   font-family: var(--font-family-secondary);
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
+  position: relative;
+  top: 6px;
 }
 .home__info-card {
   position: relative;
@@ -477,10 +483,12 @@ header {
 .join__heading {
   text-align: center;
   padding-top: var(--space-s);
-  padding-bottom: var(--space-m);
+  padding-bottom: var(--space-l);
   font-family: var(--font-family-secondary);
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
+  position: relative;
+  top: 6px;
 }
 .join-card {
   padding: var(--space-xl);
@@ -548,11 +556,13 @@ header {
 /** MESSAGES-PAGE  */
 .messages__heading {
   padding-top: var(--space-s);
-  padding-bottom: var(--space-xs);
+  padding-bottom: var(--space-xl);
   font-family: var(--font-family-secondary);
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
   margin-right: var(--space-l);
+  position: relative;
+  top: 6px;
 }
 .messages__wrapper {
   display: flex;
@@ -612,7 +622,7 @@ header {
   padding: var(--space-m) 0;
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-2xl);
 }
 .messages__nav-list {
   padding-left: var(--space-2xl);
@@ -633,10 +643,12 @@ header {
 /** NEW-MESSAGE-PAGE  */
 .new-message__heading {
   padding-top: var(--space-s);
-  padding-bottom: var(--space-m);
+  padding-bottom: var(--space-xl);
   font-family: var(--font-family-secondary);
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
+  position: relative;
+  top: 6px;
 }
 .new-message__form {
 }
@@ -956,7 +968,7 @@ footer {
     gap: var(--space-5xl);
   }
   .home__latest-message-wrapper {
-    margin-top: -60px;
+    margin-top: -67px;
     width: 160%;
   }
   .home__info-main-heading {
@@ -986,6 +998,7 @@ footer {
   }
   .home__info-card {
     min-width: 380px;
+    max-height: 800px;
   }
   .home__info-heading {
     font-size: var(--font-size-xl);
