@@ -18,6 +18,9 @@
             </a>
             <% } %>
           </li>
+          <li class="header__list-item">
+            <button id="theme-toggle" class="btn-outlined">🌗</button>
+          </li>
           <% if (!locals.user) { %>
           <li class="header__list-item">
             <a href="/register">Register</a>
@@ -46,6 +49,7 @@
   </div>
 </header>
 
+
 <script>
   const headerMenuButton = document.querySelector(".header__menu-button");
   const headerMenuIconOpen = document.querySelector(".header__menu-icon-open");
@@ -53,6 +57,27 @@
   const headerNav = document.querySelector(".header__nav");
   const header = document.querySelector(".header");
 
+  const toggleBtn = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+
+// Load theme from storage (or default to dark)
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+  root.setAttribute('data-theme', savedTheme);
+}
+
+// Toggle between dark and light
+toggleBtn.addEventListener('click', () => {
+  const current = root.getAttribute('data-theme');
+  const newTheme = current === 'light' ? 'dark' : 'light';
+  root.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+});
+
+if (!savedTheme) {
+  const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+  root.setAttribute('data-theme', prefersLight ? 'light' : 'dark');
+}
 
   function toggleHeaderNav() {
     const isOpen = header.classList.contains("nav-open");

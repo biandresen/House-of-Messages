@@ -9,8 +9,12 @@ html {
 body {
   overflow-x: hidden;
   font-family: var(--font-family-primary);
-  background-color: var(--clr-bg-1);
   color: var(--clr-text-1);
+
+  background-image: url("/images/white-diamond-dark.png");
+  background-repeat: repeat;
+  background-size: auto;
+  background-color: var(--clr-bg-1);
 }
 main {
   max-width: 100%;
@@ -48,12 +52,12 @@ a:hover {
   color: var(--clr-tertiary);
 }
 .btn-filled {
-  background-color: var(--clr-tertiary);
+  background-color: var(--clr-button);
   color: var(--clr-bg-1);
 }
 .btn-outlined {
   background-color: transparent;
-  border: 1px solid var(--clr-tertiary);
+  border: 1px solid var(--clr-button);
   color: var(--clr-tertiary);
 }
 .message__heading {
@@ -72,6 +76,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 200;
+  box-shadow: var(--shadow-bottom);
 }
 .header__content {
   position: relative;
@@ -134,6 +139,11 @@ header {
 .header__list-item a {
   display: block;
   width: 100%;
+}
+.header__list-item button {
+  margin: 0;
+  padding: 0;
+  border: none;
 }
 .header__list-item:last-child {
   padding-bottom: var(--space-l);
@@ -610,7 +620,7 @@ header {
   transform: translateX(100%); /* hide */
   transition: transform 0.3s ease;
   z-index: 5;
-  padding: 0 var(--space-2xl);
+  padding: 0 var(--space-2xl) 0 var(--space-3xl);
   overflow-y: auto;
 
   border-top: 2px solid var(--clr-secondary);
@@ -750,6 +760,7 @@ footer {
   padding: 10px 0;
   position: relative;
   z-index: 100;
+  box-shadow: var(--shadow-top);
 }
 .footer-content {
   display: flex;
