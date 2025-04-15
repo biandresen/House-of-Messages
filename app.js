@@ -17,6 +17,7 @@ const app = express();
 const PgSession = connectPgSimple(session);
 
 // Middleware
+app.set("trust proxy", 1);
 app.use(flash());
 app.use(expressLayouts);
 app.set("layout", "layout");
@@ -36,11 +37,13 @@ app.use(
     saveUninitialized: false,
     cookie: {
       maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
-      sameSite: "lax",
+      sameSite: "none",
       secure: process.env.NODE_ENV === "production", // secure should be true in production
     },
   })
 );
+
+console.log("NODE_ENV:", process.env.NODE_ENV);
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());

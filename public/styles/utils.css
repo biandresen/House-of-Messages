@@ -5,6 +5,7 @@
   --clr-tertiary: #b76e79;
   --clr-text-1: #c28840;
   --clr-text-2: rgba(255, 255, 255, 0.85);
+  --clr-text-error: white;
   --clr-ok: #50c878;
   --clr-warning: #ffe852;
   --clr-error: #800020;
@@ -69,6 +70,7 @@
   --clr-tertiary: #a36e5c;
   --clr-text-1: #5c3b09;
   --clr-text-2: rgba(0, 0, 0, 0.85);
+  --clr-text-error: white;
   --clr-ok: #3d9140;
   --clr-warning: #e4b400;
   --clr-error: #992222;

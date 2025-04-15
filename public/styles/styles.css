@@ -208,7 +208,7 @@ header {
 
   font-size: var(--font-size-xs);
   background-color: var(--clr-error);
-  color: var(--clr-text-2);
+  color: var(--clr-text-error);
 }
 .register__error-message ul li {
   margin-left: var(--space-s);
@@ -312,7 +312,7 @@ header {
 
   font-size: var(--font-size-xs);
   background-color: var(--clr-error);
-  color: var(--clr-text-2);
+  color: var(--clr-text-error);
 }
 .login__error-message ul li {
   margin-left: var(--space-s);
@@ -550,7 +550,7 @@ header {
 
   font-size: var(--font-size-s);
   background-color: var(--clr-error);
-  color: var(--clr-text-2);
+  color: var(--clr-text-error);
 }
 .join-card__hr {
   border: none;
