@@ -73,8 +73,12 @@
 </div>
 </div>
 
+<script src="/scripts/autoScrollMobile.js"></script>
 <script src="/scripts/postCard.js"></script>
 <script>
+  const titleInput = document.querySelector(".new-message__input")
+  titleInput.focus();
+
   const text = document.querySelector(".new-message__text")
 
   text.addEventListener("input", () => {

@@ -10,6 +10,7 @@ body {
 }
 main {
   max-width: 100%;
+  padding-top: 10px;
 }
 .layout {
   display: flex;
@@ -52,7 +53,7 @@ a:hover {
   color: var(--clr-tertiary);
 }
 .message__heading {
-  padding-top: var(--space-2xl);
+  padding-top: var(--space-xl);
   padding-bottom: var(--space-m);
   font-family: var(--font-family-secondary);
   font-size: var(--font-size-xl);
@@ -126,6 +127,10 @@ header {
 .header__list-item {
   list-style: none;
 }
+.header__list-item a {
+  display: block;
+  width: 100%;
+}
 .header__list-item:last-child {
   padding-bottom: var(--space-l);
 }
@@ -135,7 +140,7 @@ header {
   padding-top: var(--space-s);
   padding-bottom: var(--space-m);
   font-family: var(--font-family-secondary);
-  font-size: var(--font-size-3xl);
+  font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
 }
 .register__form-card {
@@ -238,7 +243,7 @@ header {
   padding-top: var(--space-s);
   padding-bottom: var(--space-m);
   font-family: var(--font-family-secondary);
-  font-size: var(--font-size-3xl);
+  font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
 }
 .login__form-card {
@@ -342,7 +347,7 @@ header {
   padding-top: var(--space-s);
   padding-bottom: var(--space-m);
   font-family: var(--font-family-secondary);
-  font-size: var(--font-size-3xl);
+  font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
 }
 .home__info-card {
@@ -362,7 +367,7 @@ header {
   padding-bottom: var(--space-l);
 }
 .home__user-data-heading {
-  font-size: var(--font-size-l);
+  font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
   text-decoration: underline;
 }
@@ -375,10 +380,10 @@ header {
 }
 .home__label {
   font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-s);
+  font-size: var(--font-size-m);
 }
 .home__value {
-  font-size: var(--font-size-s);
+  font-size: var(--font-size-m);
 }
 .home__buttons-wrapper {
   display: flex;
@@ -420,7 +425,7 @@ header {
   background-color: var(--clr-bg-2);
 }
 .post-card.faded {
-  margin-bottom: 0;
+  margin-bottom: var(--space-2xl);
 }
 .post-card__delete-btn {
   position: absolute;
@@ -436,8 +441,8 @@ header {
   max-width: 260px;
   width: 75%;
   line-height: var(--line-height-ss);
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-semi);
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-bold);
   padding: var(--space-m) 0 var(--space-l) 0;
   margin-top: -12px;
 }
@@ -445,7 +450,7 @@ header {
   word-wrap: break-word;
   font-size: var(--font-size-xm);
   padding-bottom: var(--space-m);
-  line-height: var(--line-height-s);
+  line-height: var(--line-height-ss);
 }
 .post-card__hr {
   border: none;
@@ -469,7 +474,7 @@ header {
   padding-top: var(--space-s);
   padding-bottom: var(--space-m);
   font-family: var(--font-family-secondary);
-  font-size: var(--font-size-3xl);
+  font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
 }
 .join-card {
@@ -538,15 +543,16 @@ header {
 /** MESSAGES-PAGE  */
 .messages__heading {
   padding-top: var(--space-s);
-  padding-bottom: var(--space-m);
+  padding-bottom: var(--space-xs);
   font-family: var(--font-family-secondary);
-  font-size: var(--font-size-3xl);
+  font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
   margin-right: var(--space-l);
 }
 .messages__wrapper {
   display: flex;
   justify-content: space-between;
+  padding-bottom: var(--space-s);
 }
 .messages__wrapper-child {
   display: flex;
@@ -558,7 +564,8 @@ header {
   font-size: var(--font-size-l);
   border-radius: var(--space-100);
   padding: var(--space-xs) var(--space-xs);
-  height: 26px;
+  height: 24px;
+  width: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -597,10 +604,10 @@ header {
   opacity: 0.98;
 }
 .messages__nav-heading {
-  padding-top: var(--space-m);
+  padding: var(--space-m) 0;
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-xl);
 }
 .messages__nav-list {
   padding-left: var(--space-2xl);
@@ -608,7 +615,7 @@ header {
   line-height: var(--line-height-xs);
 }
 .messages__nav-item {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-l);
 }
 .messages__nav-item:last-child {
   padding-bottom: var(--space-2xl);
@@ -622,7 +629,7 @@ header {
   padding-top: var(--space-s);
   padding-bottom: var(--space-m);
   font-family: var(--font-family-secondary);
-  font-size: var(--font-size-3xl);
+  font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
 }
 .new-message__form {
@@ -779,7 +786,8 @@ footer {
   }
   .post-card.faded {
     max-width: 100%;
-    width: 600px;
+    width: 300px;
+    margin-bottom: 0;
   }
   .read-more-btn {
     font-size: var(--font-size-s);
@@ -888,6 +896,9 @@ footer {
   .login__submit-btn-wrapper {
     flex: 1;
   }
+  .login__submit-btn {
+    font-size: var(--font-size-l);
+  }
   .login__form {
     height: 100%;
     display: flex;
@@ -939,7 +950,7 @@ footer {
     gap: var(--space-5xl);
   }
   .home__latest-message-wrapper {
-    margin-top: -65px;
+    margin-top: -60px;
     width: 160%;
   }
   .home__info-main-heading {
@@ -1055,7 +1066,7 @@ footer {
     margin-bottom: 0;
   }
   .new-message__section-wrapper {
-    margin-top: -65px;
+    margin-top: -60px;
     width: 50%;
   }
   .new-message__form {
@@ -1095,5 +1106,12 @@ footer {
 @media (min-width: 1200px) {
   .wrapper {
     max-width: var(--wrapper-width-xl);
+  }
+  .post-card.faded {
+    width: 600px;
+  }
+  .register__requirements-info,
+  .login__requirements-info {
+    font-size: var(--font-size-m);
   }
 }
