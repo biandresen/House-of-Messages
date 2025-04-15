@@ -445,16 +445,17 @@ header {
   max-width: 260px;
   width: 75%;
   line-height: var(--line-height-ss);
-  font-size: var(--font-size-l);
+  font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
-  padding: var(--space-m) 0 var(--space-l) 0;
+  padding: var(--space-m) 0 var(--space-2xl) 0;
   margin-top: -12px;
 }
 .post-card__text {
   word-wrap: break-word;
   font-size: var(--font-size-xm);
   padding-bottom: var(--space-m);
-  line-height: var(--line-height-ss);
+  line-height: var(--line-height-s);
+  white-space: pre-wrap;
 }
 .post-card__hr {
   border: none;
