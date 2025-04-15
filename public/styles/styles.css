@@ -2,6 +2,10 @@
 @import url("./utils.css");
 
 /** GENERAL */
+html {
+  scroll-padding-top: 60px;
+}
+
 body {
   overflow-x: hidden;
   font-family: var(--font-family-primary);
@@ -115,7 +119,7 @@ header {
   display: inline;
 }
 .header__profile-wrapper {
-  display: flex;
+  display: flex !important;
   align-items: center;
   gap: var(--space-s);
 }
@@ -616,6 +620,7 @@ header {
 }
 .messages__nav-item {
   font-size: var(--font-size-l);
+  margin-bottom: 10px;
 }
 .messages__nav-item:last-child {
   padding-bottom: var(--space-2xl);
